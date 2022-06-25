@@ -1,0 +1,158 @@
+:root {
+    --cor1: #2F4858;
+    --cor2: #F9B233;
+    --cor3: #36A9E1;
+    --cor4: #E26D5C;
+    --cor5: #723D46;
+    --cor6: #f1f1f1;
+}
+
+body {
+    background: var(--cor1);
+}
+
+header {
+    text-align: center;
+}
+
+.img-logo {
+    height: 100px;
+    padding: 30px;
+}
+
+main {
+    background: var(--cor6);
+    width: 700px;
+    min-height: 700px;
+    margin: 0 auto 100px;
+    border-radius: 10px 10px 0 0;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 1em;
+    overflow: hidden;
+    background: var(--cor3);
+    border-radius: 10px 10px 0 0;
+
+}
+
+.nav li {
+    float: left;
+}
+
+.nav-vendas,
+.nav-estoque,
+.nav-cadastro {
+    display: block;
+    background-color: var(--cor2);
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.nav a:hover {
+    background-color: var(--cor6);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    color: black;
+}
+
+.painel-vendas,
+.painel-estoque,
+.painel-cadastro {
+    display: none;
+    padding: 2.3em;
+    
+}
+
+.painel-ativo {
+    display: block;
+}
+
+.nav-ativo {
+    background-color: var(--cor6);
+    color: black;
+
+}
+
+/* paineis */
+.sessao {
+    padding: 1em;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+.adicionar-item{
+    text-align: center;
+}
+
+.cliente label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.cliente input {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    width: 400px;
+}
+
+.adicionar-item label{
+    margin: 0 0 0 0.8em;
+}
+.adicionar-item input {
+    padding: 0.5em;
+    width: 50px;
+    text-align: center;
+}
+
+.adicionar-item select {
+    padding: 0.5em;
+    width: 100px;
+}
+.preview{
+    margin: 1.5em auto;
+    width: 300px;
+    height: 120px;
+    
+
+}
+.img-preview{
+    width: 80px;
+    height: 100px;
+    background: var(--cor2);
+    display: inline-block;
+    
+}
+.info-preview {
+    display: inline-block;
+    height: 125px;
+    vertical-align: middle;
+}
+
+/* Carrinho Tabela */
+
+.demo {
+    border: 1px solid #C0C0C0;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.demo td,
+.demo th {
+    border: 1px solid #C0C0C0;
+    padding: 0.5em 2em;
+    vertical-align: middle;
+}
+.th-nome{
+    width: 60%;
+}
+button{
+    display: block;
+    margin: 0.5em auto;
+    padding: 0.5em;
+}

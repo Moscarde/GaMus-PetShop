@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <title>GaMus PetShop - Vendas</title>
+</head>
+
+<body>
+    <header>
+        <img class="img-logo" src="./img/Sem Título-2.jpg">
+    </header>
+    <main>
+        <ul class="nav">
+            <li><a href="#" class="nav-vendas nav-ativo">Vendas</a> </li>
+            <li><a href="#" class="nav-estoque">Tabela Estoque</a></li>
+            <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
+        </ul>
+        <div class="painel-vendas  painel-ativo">
+            <form>
+                <div class="cliente sessao">
+                    <label for="nomecliente">Nome</label>
+                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" required />
+
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" class="input-padrao" required placeholder="Rua Um Numero: 2" />
+
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" class="input-padrao" required placeholder="(xx) xxxxx-xxxx" />
+                </div>
+                <div class="adicionar-item sessao">
+                    <label for="codigo">Por Código</label>
+                    <input type="text" id="input-codigo"/>
+                    <label for="lista-itens">Pela Lista</label>
+                    <select name="lista" id="lista-itens">
+                        <option value="racao">Racao</option>
+                    </select>
+
+                    <button class="btn-procurar-item">Procurar Item</button>
+
+                    <div class="preview">
+                        <div class="img-preview">
+                        </div>
+                        <div class="info-preview">
+                            <p>Nome:<em class="nome-preview"> </em></p>
+                            <p>Valor:<em class="valor-preview"> </em></p>
+                        </div>
+                    </div>
+
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="quantidade"/>
+                    <label for="lista-tipo">Tipo</label>
+                    <select name="tipo" id="lista-tipo">
+                        <option value="unidade">unidade</option>
+                        <option value="kg">kg</option>
+                        <option value="saco">Saco</option>
+                    </select>
+
+                    <button class="btn-adicionar-item">Adicionar ao carrinho</button>
+                </div>
+                <div class="carrinho sessao">
+                    <table class="demo">
+                        <caption>Carrinho</caption>
+                        <thead>
+                        <tr>
+                            <th>Código item</th>
+                            <th class="th-nome">Nome</th>
+                            <th>Quantidade</th>
+                            <th>Valor Total Item</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="submit" class="btn-enviar" value="Enviar formulário" />
+            </form>
+
+        </div>
+        <div class="painel-estoque ">
+            Conteudo estoque
+        </div>
+        <div class="painel-cadastro ">
+            Conteudo cadastro
+        </div>
+    </main>
+    <script src="./script/index.js"></script>
+    <script src="./script/main.js"></script>
+    <script src="./script/interacao.js"></script>
+</body>
+
+</html>
