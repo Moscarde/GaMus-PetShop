@@ -116,7 +116,6 @@ main {
     margin: 1.5em auto;
     width: 300px;
     height: 120px;
-    
 
 }
 .img-preview{
@@ -124,12 +123,17 @@ main {
     height: 100px;
     background: var(--cor2);
     display: inline-block;
-    
+}
+.img-preview img{
+    width: 80px;
+    height: 100px;
 }
 .info-preview {
     display: inline-block;
-    height: 125px;
+    height: 135px;
     vertical-align: middle;
+    text-align: left;
+    margin-left: 0.5em;
 }
 
 /* Carrinho Tabela */

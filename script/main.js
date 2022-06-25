@@ -37,8 +37,8 @@ class Acessorio extends Item {
 //          ---Objetos---
 
 const racaoFoster = new Racao("Ração Foster", "Cachorros", 8, 55, 10, "./img/racaofoster.png") //ração
-const racaoPedigree = new Racao("Ração Pedigree", "Cachorros", 10, 60, 10, "./img/racaofoster.png")
-const racaoGolden = new Racao("Ração Golden", "Gatos", 16, 65, 15, "./img/racaofoster.png")
+const racaoPedigree = new Racao("Ração Pedigree", "Cachorros", 10, 60, 10, "./img/racaopedigree.png")
+const racaoGolden = new Racao("Ração Golden", "Gatos", 16, 65, 15, "./img/racaogolden.png")
 const ratinhoBorracha = new Brinquedo("Ratinho de borracha", "Gatos", 5, 30) //brinquedo
 const ossoBorracha = new Brinquedo("Osso de borracha", "Cachorros", 8, 20)
 const coleiraCachorro = new Acessorio("Coleira de cachorros", "Cachorros", 15, 10) //acessorios
@@ -46,6 +46,6 @@ const coleiraGato = new Acessorio("Coleira de gatos", "Gatos", 7, 10)
 
 const listaItens = [racaoFoster, racaoPedigree, racaoGolden, ratinhoBorracha, ossoBorracha, coleiraCachorro, coleiraGato] //lista com todos os objetos
 
-// console.log(listaItens)
+console.log(listaItens)
 
 //          ---Interação---
