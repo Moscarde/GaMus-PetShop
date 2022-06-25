@@ -21,24 +21,22 @@
             <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
         </ul>
         <div class="painel-vendas  painel-ativo">
-            <form>
+            <section>
                 <div class="cliente sessao">
                     <label for="nomecliente">Nome</label>
-                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" required />
+                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente"  />
 
                     <label for="endereco">Endereço</label>
-                    <input type="text" id="endereco" class="input-padrao" required placeholder="Rua Um Numero: 2" />
+                    <input type="text" id="endereco" class="input-padrao"  placeholder="Rua Um Numero: 2" />
 
                     <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" class="input-padrao" required placeholder="(xx) xxxxx-xxxx" />
+                    <input type="tel" id="telefone" class="input-padrao"  placeholder="(xx) xxxxx-xxxx" />
                 </div>
                 <div class="adicionar-item sessao">
                     <label for="codigo">Por Código</label>
                     <input type="text" id="input-codigo"/>
-                    <label for="lista-itens">Pela Lista</label>
-                    <select name="lista" id="lista-itens">
-                        <option value="racao">Racao</option>
-                    </select>
+                    <label for="lista-itens">Por nome</label>
+                    <input type="text" id="input-nome" />
 
                     <button class="btn-procurar-item">Procurar Item</button>
 
@@ -85,7 +83,7 @@
                     </table>
                 </div>
                 <input type="submit" class="btn-enviar" value="Enviar formulário" />
-            </form>
+            </section>
 
         </div>
         <div class="painel-estoque ">

@@ -99,13 +99,19 @@ main {
     width: 400px;
 }
 
+/* adicionar itens */
 .adicionar-item label{
     margin: 0 0 0 0.8em;
 }
-.adicionar-item input {
+#input-codigo, #input-quant{
     padding: 0.5em;
     width: 50px;
     text-align: center;
+}
+
+#input-nome{
+    padding:0.5em;
+    width: 150px;
 }
 
 .adicionar-item select {

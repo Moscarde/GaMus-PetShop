@@ -1,10 +1,11 @@
 
+const inputCodigo = document.getElementById("input-codigo") /**.value */
+const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
 const nomePreview = document.querySelector(".nome-preview")
 const valorPreview = document.querySelector(".valor-preview")
 const imgPreview = document.querySelector(".img-preview")
-const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputQuant = document.getElementById("input-quant")
 const tabelaCarrinho = document.querySelector(".tabela-carrinho")
 
@@ -13,7 +14,35 @@ let valorItem = 0
 let urlItem = ""
 let iItem = ""
 
+inputNome.onfocus = function () {
+    inputCodigo.value = ""
+}
+
+inputCodigo.onfocus = function () {
+    inputNome.value = ""
+}
+
+
+function procuraItemPorNome() {
+    console.log('procurando por nome')
+    let textoInput = inputNome.value
+    listaItens.map(obj => {
+        if (obj.nome.includes(textoInput)){
+            console.log(obj);
+        }
+    })
+
+}
+
 btnProcurarItem.onclick = function () {
+    if (inputCodigo.value == "") {
+        console.log('codigo vazio')
+        procuraItemPorNome()
+    }
+    else if (inputNome.value == "") {
+        procuraItemPorCodigo()
+    }
+    return
     iItem = inputCodigo.value - 1
     trataCoisas(iItem)
     nomePreview.innerHTML = nomeItem;
@@ -38,7 +67,7 @@ btnAdicionarItem.onclick = function () {
     let itemCarrinho = structuredClone(listaItens[iItem])
     carrinho.push(itemCarrinho)
     console.log(carrinho)
-    adicionarLinhaTabela(quant, carrinho.length-1, )
+    adicionarLinhaTabela(quant, carrinho.length - 1,)
 }
 
 function adicionarLinhaTabela(quant, index) {
