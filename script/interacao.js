@@ -30,15 +30,12 @@ inputCodigo.onfocus = function () {
 }
 
 //          === === === FUNCOES === === ===
-function procuraItemPorNome() {
+function procuraItemPorNome(nome) {
     console.log('procurando por nome')
-    let textoInput = inputNome.value
-    listaItens.map(obj => {
-        if (obj.nome.includes(textoInput)){
-            console.log(obj);
-        }
-    })
+    let item = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
+    mostraItemPreview(item)
 }
+
 function procuraItemPorCodigo(codigo) {
     let item = listaItens.find(item => item.codigoItem == codigo)
     mostraItemPreview(item)
@@ -84,8 +81,8 @@ function adicionarLinhaTabela(quant, index) {
 btnProcurarItem.onclick = function () {
     if (inputCodigo.value == "") { 
         //procurando por nome
-        console.log('codigo vazio')
-        procuraItemPorNome()
+        let nome = inputNome.value
+        procuraItemPorNome(nome)
     }
     else if (inputNome.value == "") {
         //procurando por codigo
