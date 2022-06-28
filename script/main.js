@@ -14,7 +14,9 @@ class Racao extends Item {
         this.valorKg = valorKg;
         this.valorSaco = valorSaco;
         this.estoqueSaco = estoqueSaco;
+        this.estoqueKg = this.estoqueSaco * 20
     }
+
 }
 class Brinquedo extends Item {
     constructor(nome, especie, valor, estoque, url) {
@@ -46,6 +48,6 @@ const coleiraGato = new Acessorio("Coleira de gatos", "Gatos", 7, 10)
 
 const listaItens = [racaoFoster, racaoPedigree, racaoGolden, ratinhoBorracha, ossoBorracha, coleiraCachorro, coleiraGato] //lista com todos os objetos
 
-//console.log(listaItens)
+console.log(listaItens[0].constructor.name)
 // console.log(listaItens[0].nome.includes('Foster'))
 //          ---Interação---

@@ -4,8 +4,10 @@ const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
 
 //Preview
+const codigoPreview = document.querySelector(".codigo-preview")
 const nomePreview = document.querySelector(".nome-preview")
 const valorPreview = document.querySelector(".valor-preview")
+const estoquePreview = document.querySelector(".estoque-preview")
 const imgPreview = document.querySelector(".img-preview")
 const arrowLeft = document.querySelector(".preview-arrow-left")
 const arrowRight = document.querySelector(".preview-arrow-right")
@@ -39,23 +41,41 @@ function procuraItemPorCodigo(codigo) {
 }
 
 function mostraItemPreview(item) {
-    let nomeItem = ''
-    let valorItem = ''
-    let urlItem = ''
+    let previewCodigoItem = ''
+    let previewNomeItem = ''
+    let previewValorItem = ''
+    let previewEstoqueItem = ''
+    let previewUrlItem = ''
 
     if (item != undefined) {
-        nomeItem = item.nome
-        valorItem = item.valorKg
-        urlItem = '<img src="' + item.url + '">'
+        previewCodigoItem = item.codigoItem
+        previewNomeItem = item.nome
+        previewValorItem = item.valorKg
+        previewEstoqueItem = calculaEstoque(item)
+        previewUrlItem = '<img src="' + item.url + '">'
+
     
     } else {
-        nomeItem = "Não encontrado"
-        valorItem = "Não encontrado"
-        urlItem = '<img src="' + './img/erro.jpg' + '">'
+        previewNomeItem = "Não encontrado"
+        previewValorItem = "Não encontrado"
+        previewUrlItem = '<img src="' + './img/erro.jpg' + '">'
     }
-    nomePreview.innerHTML = nomeItem;
-    valorPreview.innerHTML = valorItem;
-    imgPreview.innerHTML = urlItem;
+    codigoPreview.innerHTML = previewCodigoItem
+    nomePreview.innerHTML = previewNomeItem;
+    valorPreview.innerHTML = previewValorItem;
+    estoquePreview.innerHTML = previewEstoqueItem;
+    imgPreview.innerHTML = previewUrlItem;
+}
+
+function calculaEstoque(item) {
+    let estoque = ''
+    if (item.constructor.name == "Racao") {
+        estoque = `${item.estoqueSaco} sacos -> ${item.estoqueSaco * 20} quilos`
+        return estoque
+    } else {
+        estoque = item.estoque + ' un.'
+        return estoque
+    }
 }
 
 function adicionarLinhaTabela(quant, index) {
