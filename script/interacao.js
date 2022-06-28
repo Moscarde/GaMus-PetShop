@@ -15,10 +15,7 @@ const inputQuant = document.getElementById("input-quant")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
 const tabelaCarrinho = document.querySelector(".tabela-carrinho")
 
-let nomeItem = " "
-let valorItem = 0
-let urlItem = ""
-let iItem = ""
+let itemAtual = ''
 let carrinho = []
 
 inputNome.onfocus = function () {
@@ -32,16 +29,20 @@ inputCodigo.onfocus = function () {
 //          === === === FUNCOES === === ===
 function procuraItemPorNome(nome) {
     console.log('procurando por nome')
-    let item = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
-    mostraItemPreview(item)
+    itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
+    mostraItemPreview(itemAtual)
 }
 
 function procuraItemPorCodigo(codigo) {
-    let item = listaItens.find(item => item.codigoItem == codigo)
-    mostraItemPreview(item)
+    itemAtual = listaItens.find(item => item.codigoItem == codigo)
+    mostraItemPreview(itemAtual)
 }
 
 function mostraItemPreview(item) {
+    let nomeItem = ''
+    let valorItem = ''
+    let urlItem = ''
+
     if (item != undefined) {
         nomeItem = item.nome
         valorItem = item.valorKg
@@ -55,13 +56,6 @@ function mostraItemPreview(item) {
     nomePreview.innerHTML = nomeItem;
     valorPreview.innerHTML = valorItem;
     imgPreview.innerHTML = urlItem;
-}
-
-function trataCoisas(i) {
-    
-
-    //console.log(nomeItem, valorItem, urlItem);
-
 }
 
 function adicionarLinhaTabela(quant, index) {
@@ -91,8 +85,29 @@ btnProcurarItem.onclick = function () {
     }
 
 }
+arrowRight.onclick = function () {
+    itemAtual = listaItens[listaItens.indexOf(itemAtual) + 1]
+    if (itemAtual === undefined) {
+        itemAtual = listaItens[0]
+        console.log('retornou a 0');
+    }
+    mostraItemPreview(itemAtual)
+    console.log(itemAtual);
+}
+
+arrowLeft.onclick = function () {
+    //se for o primeiro item ou vazio ==>  volta pro ultimo item
+    itemAtual = listaItens[listaItens.indexOf(itemAtual) - 1]
+    if (itemAtual === undefined) {
+        itemAtual = listaItens[listaItens.length - 1]
+        console.log('retornou ao max');
+    }
+    mostraItemPreview(itemAtual)
+}
 
 btnAdicionarItem.onclick = function () {
+    console.log(listaItens[7]);
+    return
     let quant = inputQuant.value
     let itemCarrinho = structuredClone(listaItens[iItem])
     carrinho.push(itemCarrinho)
