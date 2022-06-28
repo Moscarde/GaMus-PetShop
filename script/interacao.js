@@ -41,17 +41,20 @@ function procuraItemPorNome() {
 }
 function procuraItemPorCodigo(codigo) {
     let item = listaItens.find(item => item.codigoItem == codigo)
-    if (item != undefined) {
-        mostraItemPreview(item)
-    } else {
-        console.log('item não encontrado');
-    }
+    mostraItemPreview(item)
 }
-function mostraItemPreview(item) {
-    nomeItem = item.nome
-    valorItem = item.valorKg
-    urlItem = '<img src="' + item.url + '">'
 
+function mostraItemPreview(item) {
+    if (item != undefined) {
+        nomeItem = item.nome
+        valorItem = item.valorKg
+        urlItem = '<img src="' + item.url + '">'
+    
+    } else {
+        nomeItem = "Não encontrado"
+        valorItem = "Não encontrado"
+        urlItem = '<img src="' + './img/erro.jpg' + '">'
+    }
     nomePreview.innerHTML = nomeItem;
     valorPreview.innerHTML = valorItem;
     imgPreview.innerHTML = urlItem;
