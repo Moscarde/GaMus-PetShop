@@ -46,6 +46,6 @@ const coleiraGato = new Acessorio("Coleira de gatos", "Gatos", 7, 10)
 
 const listaItens = [racaoFoster, racaoPedigree, racaoGolden, ratinhoBorracha, ossoBorracha, coleiraCachorro, coleiraGato] //lista com todos os objetos
 
-console.log(listaItens)
+//console.log(listaItens)
 
 //          ---Interação---

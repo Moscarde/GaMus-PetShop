@@ -1,18 +1,25 @@
-
+//Pesquisar item
 const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
-const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
+
+//Preview
 const nomePreview = document.querySelector(".nome-preview")
 const valorPreview = document.querySelector(".valor-preview")
 const imgPreview = document.querySelector(".img-preview")
+const arrowLeft = document.querySelector(".preview-arrow-left")
+const arrowRight = document.querySelector(".preview-arrow-right")
+
+//Adicionar ao carrinho
 const inputQuant = document.getElementById("input-quant")
+const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
 const tabelaCarrinho = document.querySelector(".tabela-carrinho")
 
 let nomeItem = " "
 let valorItem = 0
 let urlItem = ""
 let iItem = ""
+let carrinho = []
 
 inputNome.onfocus = function () {
     inputCodigo.value = ""
@@ -22,7 +29,7 @@ inputCodigo.onfocus = function () {
     inputNome.value = ""
 }
 
-
+//          === === === FUNCOES === === ===
 function procuraItemPorNome() {
     console.log('procurando por nome')
     let textoInput = inputNome.value
@@ -31,43 +38,30 @@ function procuraItemPorNome() {
             console.log(obj);
         }
     })
-
 }
+function procuraItemPorCodigo(codigo) {
+    let item = listaItens.find(item => item.codigoItem == codigo)
+    if (item != undefined) {
+        mostraItemPreview(item)
+    } else {
+        console.log('item não encontrado');
+    }
+}
+function mostraItemPreview(item) {
+    nomeItem = item.nome
+    valorItem = item.valorKg
+    urlItem = '<img src="' + item.url + '">'
 
-btnProcurarItem.onclick = function () {
-    if (inputCodigo.value == "") {
-        console.log('codigo vazio')
-        procuraItemPorNome()
-    }
-    else if (inputNome.value == "") {
-        procuraItemPorCodigo()
-    }
-    return
-    iItem = inputCodigo.value - 1
-    trataCoisas(iItem)
     nomePreview.innerHTML = nomeItem;
     valorPreview.innerHTML = valorItem;
     imgPreview.innerHTML = urlItem;
-
 }
 
-
 function trataCoisas(i) {
-    nomeItem = listaItens[i].nome
-    valorItem = listaItens[i].valorKg
-    urlItem = '<img src="' + listaItens[i].url + '">'
+    
 
     //console.log(nomeItem, valorItem, urlItem);
 
-}
-
-let carrinho = []
-btnAdicionarItem.onclick = function () {
-    let quant = inputQuant.value
-    let itemCarrinho = structuredClone(listaItens[iItem])
-    carrinho.push(itemCarrinho)
-    console.log(carrinho)
-    adicionarLinhaTabela(quant, carrinho.length - 1,)
 }
 
 function adicionarLinhaTabela(quant, index) {
@@ -81,3 +75,28 @@ function adicionarLinhaTabela(quant, index) {
     `
     tabelaCarrinho.innerHTML += estrutura
 }
+
+
+//          === === === ONCLICK === === ===
+btnProcurarItem.onclick = function () {
+    if (inputCodigo.value == "") { 
+        //procurando por nome
+        console.log('codigo vazio')
+        procuraItemPorNome()
+    }
+    else if (inputNome.value == "") {
+        //procurando por codigo
+        let codigo = inputCodigo.value
+        procuraItemPorCodigo(codigo)
+    }
+
+}
+
+btnAdicionarItem.onclick = function () {
+    let quant = inputQuant.value
+    let itemCarrinho = structuredClone(listaItens[iItem])
+    carrinho.push(itemCarrinho)
+    console.log(carrinho)
+    adicionarLinhaTabela(quant, carrinho.length - 1,)
+}
+

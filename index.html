@@ -24,34 +24,38 @@
             <section>
                 <div class="cliente sessao">
                     <label for="nomecliente">Nome</label>
-                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente"  />
+                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" />
 
                     <label for="endereco">Endereço</label>
-                    <input type="text" id="endereco" class="input-padrao"  placeholder="Rua Um Numero: 2" />
+                    <input type="text" id="endereco" class="input-padrao" placeholder="Rua Um Numero: 2" />
 
                     <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" class="input-padrao"  placeholder="(xx) xxxxx-xxxx" />
+                    <input type="tel" id="telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" />
                 </div>
                 <div class="adicionar-item sessao">
                     <label for="codigo">Por Código</label>
-                    <input type="text" id="input-codigo"/>
+                    <input type="text" id="input-codigo" />
                     <label for="lista-itens">Por nome</label>
                     <input type="text" id="input-nome" />
 
                     <button class="btn-procurar-item">Procurar Item</button>
 
                     <div class="preview">
-                        <div class="img-preview">
+                        <img src="./img/arrow.png" class="preview-arrow-left">
+                        <div class="preview-item">
+                            <div class="img-preview">
+                            </div>
+                            <div class="info-preview">
+                                <p>Nome:<em class="nome-preview"> </em></p>
+                                <p>Valor:<em class="valor-preview"> </em></p>
+                                <p>Estoque:<em class="estoque-preview"> </em></p>
+                            </div>
                         </div>
-                        <div class="info-preview">
-                            <p>Nome:<em class="nome-preview"> </em></p>
-                            <p>Valor:<em class="valor-preview"> </em></p>
-                            <p>Estoque:<em class="estoque-preview"> </em></p>
-                        </div>
+                        <img src="./img/arrow.png" class="preview-arrow-right">
                     </div>
 
                     <label for="quantidade">Quantidade</label>
-                    <input type="number" id="input-quant"/>
+                    <input type="number" id="input-quant" />
                     <label for="lista-tipo">Tipo</label>
                     <select name="tipo" id="lista-tipo">
                         <option value="unidade">unidade</option>
@@ -65,15 +69,15 @@
                     <table class="demo">
                         <caption>Carrinho</caption>
                         <thead>
-                        <tr>
-                            <th>Código item</th>
-                            <th class="th-nome">Nome</th>
-                            <th>Quantidade</th>
-                            <th>Valor Total Item</th>
-                        </tr>
+                            <tr>
+                                <th>Código item</th>
+                                <th class="th-nome">Nome</th>
+                                <th>Quantidade</th>
+                                <th>Valor Total Item</th>
+                            </tr>
                         </thead>
                         <tbody class="tabela-carrinho">
-                        <!-- <tr>
+                            <!-- <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>

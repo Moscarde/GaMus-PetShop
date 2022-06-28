@@ -84,9 +84,6 @@ main {
     border: solid 1px black;
     border-radius: 5px;
 }
-.adicionar-item{
-    text-align: center;
-}
 
 .cliente label {
     display: block;
@@ -100,6 +97,9 @@ main {
 }
 
 /* adicionar itens */
+.adicionar-item{
+    text-align: center;
+}
 .adicionar-item label{
     margin: 0 0 0 0.8em;
 }
@@ -119,9 +119,29 @@ main {
     width: 100px;
 }
 .preview{
-    margin: 1.5em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.preview-arrow-left, .preview-arrow-right{
+    width: 20px;
+    height: 20px;
+    padding: 0.5em;
+    transition: all 0.1s ease-in-out;
+}
+.preview-arrow-left:hover, .preview-arrow-right:hover{
+    filter: drop-shadow(1px 1px 8px var(--cor1));
+    cursor: pointer;
+
+}
+.preview-arrow-left{
+    transform: scaleX(-1)
+}
+.preview-item{
+    /* margin: 1.5em auto; */
     width: 300px;
     height: 120px;
+
 
 }
 .img-preview{
