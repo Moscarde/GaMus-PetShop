@@ -35,7 +35,6 @@ main {
     overflow: hidden;
     background: var(--cor3);
     border-radius: 10px 10px 0 0;
-
 }
 
 .nav li {
@@ -65,7 +64,6 @@ main {
 .painel-cadastro {
     display: none;
     padding: 2.3em;
-    
 }
 
 .painel-ativo {
@@ -75,7 +73,6 @@ main {
 .nav-ativo {
     background-color: var(--cor6);
     color: black;
-
 }
 
 /* paineis */
@@ -97,20 +94,23 @@ main {
 }
 
 /* adicionar itens */
-.adicionar-item{
+.adicionar-item {
     text-align: center;
 }
-.adicionar-item label{
+
+.adicionar-item label {
     margin: 0 0 0 0.8em;
 }
-#input-codigo, #input-quant{
+
+#input-codigo,
+#input-quant {
     padding: 0.5em;
     width: 50px;
     text-align: center;
 }
 
-#input-nome{
-    padding:0.5em;
+#input-nome {
+    padding: 0.5em;
     width: 150px;
 }
 
@@ -118,41 +118,57 @@ main {
     padding: 0.5em;
     width: 100px;
 }
-.preview{
+
+.preview {
     display: flex;
     justify-content: center;
     align-items: center
 }
-.preview-arrow-left, .preview-arrow-right{
+
+.preview-arrow-left,
+.preview-arrow-right {
     width: 20px;
     height: 20px;
     padding: 0.5em;
     transition: all 0.1s ease-in-out;
 }
-.preview-arrow-left:hover, .preview-arrow-right:hover{
+
+#input-codigo:focus,
+#input-quant:focus,
+#input-nome:focus {
+    outline-color: var(--cor2);
+}
+
+.preview-arrow-left:hover,
+.preview-arrow-right:hover {
     filter: drop-shadow(1px 1px 8px var(--cor1));
     cursor: pointer;
 
 }
-.preview-arrow-left{
+
+.preview-arrow-left {
     transform: scaleX(-1)
 }
-.preview-item{
+
+.preview-item {
     /* margin: 1.5em auto; */
     width: 300px;
     height: 120px;
 
 }
-.img-preview{
+
+.img-preview {
     width: 80px;
     height: 100px;
     background: var(--cor2);
     display: inline-block;
 }
-.img-preview img{
+
+.img-preview img {
     width: 80px;
     height: 100px;
 }
+
 .info-preview {
     display: inline-block;
     height: 135px;
@@ -177,10 +193,12 @@ main {
     padding: 0.5em 2em;
     vertical-align: middle;
 }
-.th-nome{
+
+.th-nome {
     width: 60%;
 }
-button{
+
+button {
     display: block;
     margin: 0.5em auto;
     padding: 0.5em;

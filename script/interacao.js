@@ -29,6 +29,31 @@ inputCodigo.onfocus = function () {
 }
 
 //          === === === FUNCOES === === ===
+
+    //          === === === Calculos e redundancias === === ===
+const verificaImgPreview = item => {
+    if (item.url != undefined) {
+        const url = '<img src="' + item.url + '">'
+        return url
+    }
+    else {
+        const url = '<img src="' + './img/erro-img-nao-encontrada.jpg' + '">'
+        return url
+    }
+}
+
+function calculaEstoque(item) {
+    let estoque = ''
+    if (item.constructor.name == "Racao") {
+        estoque = `${item.estoqueSaco} sacos -> ${item.estoqueSaco * 15} quilos`
+        return estoque
+    } else {
+        estoque = item.estoque + ' un.'
+        return estoque
+    }
+}
+
+    //          === === === Main === === ===
 function procuraItemPorNome(nome) {
     console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
@@ -52,30 +77,19 @@ function mostraItemPreview(item) {
         previewNomeItem = item.nome
         previewValorItem = item.valorKg
         previewEstoqueItem = calculaEstoque(item)
-        previewUrlItem = '<img src="' + item.url + '">'
-
-    
+        previewUrlItem = verificaImgPreview(item)
     } else {
+        previewCodigoItem = "Não encontrado"
         previewNomeItem = "Não encontrado"
         previewValorItem = "Não encontrado"
-        previewUrlItem = '<img src="' + './img/erro.jpg' + '">'
+        previewEstoqueItem = "Não encontrado"
+        previewUrlItem = '<img src="' + './img/erro-item-nao-encontrado.jpg' + '">'
     }
     codigoPreview.innerHTML = previewCodigoItem
     nomePreview.innerHTML = previewNomeItem;
     valorPreview.innerHTML = previewValorItem;
     estoquePreview.innerHTML = previewEstoqueItem;
     imgPreview.innerHTML = previewUrlItem;
-}
-
-function calculaEstoque(item) {
-    let estoque = ''
-    if (item.constructor.name == "Racao") {
-        estoque = `${item.estoqueSaco} sacos -> ${item.estoqueSaco * 20} quilos`
-        return estoque
-    } else {
-        estoque = item.estoque + ' un.'
-        return estoque
-    }
 }
 
 function adicionarLinhaTabela(quant, index) {
@@ -93,7 +107,7 @@ function adicionarLinhaTabela(quant, index) {
 
 //          === === === ONCLICK === === ===
 btnProcurarItem.onclick = function () {
-    if (inputCodigo.value == "") { 
+    if (inputCodigo.value == "") {
         //procurando por nome
         let nome = inputNome.value
         procuraItemPorNome(nome)
@@ -126,7 +140,7 @@ arrowLeft.onclick = function () {
 }
 
 btnAdicionarItem.onclick = function () {
-    console.log(listaItens[7]);
+    listaItens[0].vendaAGranel(10)
     return
     let quant = inputQuant.value
     let itemCarrinho = structuredClone(listaItens[iItem])
@@ -135,3 +149,7 @@ btnAdicionarItem.onclick = function () {
     adicionarLinhaTabela(quant, carrinho.length - 1,)
 }
 
+inputCodigo.onkeyup = function () {
+    const codigo = inputCodigo.value
+    procuraItemPorCodigo(codigo)
+}
