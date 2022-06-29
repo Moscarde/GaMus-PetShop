@@ -81,6 +81,9 @@ main {
     border: solid 1px black;
     border-radius: 5px;
 }
+.sessao:not(:first-child){
+    margin-top: 0.8em;
+}
 
 .cliente label {
     display: block;
@@ -142,14 +145,21 @@ main {
 .preview-arrow-right {
     width: 20px;
     height: 20px;
-    padding: 0.5em;
+    padding: 1.5em;
     transition: all 0.1s ease-in-out;
 }
 
 #input-codigo:focus,
+#input-nome:focus,
+#select-categoria:focus,
 #input-quant:focus,
-#input-nome:focus {
+#select-tipo:focus {
     outline-color: var(--cor2);
+}
+
+#select-categoria{
+    padding: 0.5em;
+    width: 180px;
 }
 
 .preview-arrow-left:hover,
@@ -164,9 +174,10 @@ main {
 }
 
 .preview-item {
-    /* margin: 1.5em auto; */
+    display: flex;
     width: 300px;
     height: 120px;
+    align-items: center;
 
 }
 
@@ -183,9 +194,6 @@ main {
 }
 
 .info-preview {
-    display: inline-block;
-    height: 135px;
-    vertical-align: middle;
     text-align: left;
     margin-left: 0.5em;
 }
@@ -194,7 +202,7 @@ main {
     width: 50px;
     text-align: center;
 }
-.adicionar-item select {
+#select-tipo {
     padding: 0.5em;
     width: 120px;
 }

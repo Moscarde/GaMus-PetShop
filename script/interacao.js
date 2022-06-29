@@ -55,14 +55,14 @@ const verificaImgPreview = item => {
     }
 }
 
-function calculaEstoque(item) {
+function calculaTipo(item) {
     let estoque = ''
     if (item.constructor.name == "Racao") {
         estoque = `${item.estoqueSaco} sacos -> ${item.estoqueSaco * 15} quilos`
-        return estoque
+        return [item.valorKg, estoque] 
     } else {
         estoque = item.estoque + ' un.'
-        return estoque
+        return [item.valor, estoque] 
     }
 }
 
@@ -88,8 +88,8 @@ function mostraItemPreview(item) {
     if (item != undefined) {
         previewCodigoItem = item.codigoItem
         previewNomeItem = item.nome
-        previewValorItem = item.valorKg
-        previewEstoqueItem = calculaEstoque(item)
+        previewValorItem = calculaTipo(item)[0]
+        previewEstoqueItem = calculaTipo(item)[1]
         previewUrlItem = verificaImgPreview(item)
     } else {
         previewCodigoItem = "Não encontrado"
