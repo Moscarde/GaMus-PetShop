@@ -33,12 +33,22 @@
                     <input type="tel" id="telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" />
                 </div>
                 <div class="adicionar-item sessao">
-                    <label for="codigo">Por Código</label>
-                    <input type="text" id="input-codigo" />
-                    <label for="lista-itens">Por nome</label>
-                    <input type="text" id="input-nome" />
+                    <div class="pesquisa">
+                        <label for="codigo">Por código</label>
+                        <input type="text" id="input-codigo" />
 
-                    <button class="btn-procurar-item">Procurar Item</button>
+                        <label for="lista-itens">Por nome</label>
+                        <input type="text" id="input-nome" />
+                        <button class="btn-procurar-item">Procurar Item</button>
+                    </div>
+                    <div class="categoria">
+                        <input type="checkbox" id="check-categoria" name="check-categoria">
+                        <label for="check-categoria">Filtrar Categoria</label>
+                        <select name="tipo" id="select-categoria">
+                            <!-- Puxado do banco de dados -->
+                            <option value="#">...</option>
+                        </select>
+                    </div>
 
                     <div class="preview">
                         <img src="./img/arrow.png" class="preview-arrow-left">
@@ -58,7 +68,7 @@
                     <label for="quantidade">Quantidade</label>
                     <input type="number" id="input-quant" />
                     <label for="lista-tipo">Tipo</label>
-                    <select name="tipo" id="lista-tipo">
+                    <select name="tipo" id="select-tipo">
                         <option value="unidade">unidade</option>
                         <option value="kg">kg</option>
                         <option value="saco">Saco</option>

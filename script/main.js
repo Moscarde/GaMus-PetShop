@@ -15,6 +15,7 @@ class Racao extends Item {
         this.valorSaco = valorSaco;
         this.estoqueKg = estoqueSaco * 15
         this.estoqueSaco = this.estoqueKg / 15;
+        this.categoria = this.constructor.name
     }
     vendaAGranel(quant) {
         this.estoqueKg -= quant
@@ -28,6 +29,7 @@ class Brinquedo extends Item {
         this.especie = especie;
         this.valor = valor;
         this.estoque = estoque;
+        this.categoria = this.constructor.name
     }
 }
 class Acessorio extends Item {
@@ -36,6 +38,7 @@ class Acessorio extends Item {
         this.especie = especie;
         this.valor = valor;
         this.estoque = estoque;
+        this.categoria = this.constructor.name
     }
 }
 
@@ -53,7 +56,7 @@ const coleiraGato = new Acessorio("Coleira de gatos", "Gatos", 7, 10)
 const listaItens = [racaoFoster, racaoPedigree, racaoGolden, ratinhoBorracha, ossoBorracha, coleiraCachorro, coleiraGato] //lista com todos os objetos
 
 //console.log(listaItens[0].constructor.name)
-console.log(listaItens[0]);
+console.log(listaItens);
 
 // console.log(listaItens[0].nome.includes('Foster'))
 //          ---Interação---

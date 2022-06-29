@@ -99,11 +99,18 @@ main {
 }
 
 .adicionar-item label {
-    margin: 0 0 0 0.8em;
+    margin: 0 0.3em 0 0.7em;
 }
 
-#input-codigo,
-#input-quant {
+
+    /* pesquisa e categoria*/
+.pesquisa, .categoria{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5em;
+}
+#input-codigo {
     padding: 0.5em;
     width: 50px;
     text-align: center;
@@ -111,15 +118,21 @@ main {
 
 #input-nome {
     padding: 0.5em;
-    width: 150px;
+    width: 80px;
 }
-
-.adicionar-item select {
+.btn-procurar-item {
     padding: 0.5em;
-    width: 100px;
+    margin: 0 0.3em 0 0.7em;
+}
+#check-categoria{
+    margin-right: -4px;
 }
 
+
+
+    /* preview */
 .preview {
+    margin: 1.5em 0 1.5em 0;
     display: flex;
     justify-content: center;
     align-items: center
@@ -176,7 +189,15 @@ main {
     text-align: left;
     margin-left: 0.5em;
 }
-
+#input-quant {
+    padding: 0.5em;
+    width: 50px;
+    text-align: center;
+}
+.adicionar-item select {
+    padding: 0.5em;
+    width: 120px;
+}
 /* Carrinho Tabela */
 
 .demo {
@@ -198,8 +219,3 @@ main {
     width: 60%;
 }
 
-button {
-    display: block;
-    margin: 0.5em auto;
-    padding: 0.5em;
-}

@@ -2,6 +2,7 @@
 const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
+const selectCategoria = document.getElementById("select-categoria")
 
 //Preview
 const codigoPreview = document.querySelector(".codigo-preview")
@@ -117,8 +118,16 @@ btnProcurarItem.onclick = function () {
         let codigo = inputCodigo.value
         procuraItemPorCodigo(codigo)
     }
-
 }
+inputCodigo.onkeyup = function () {
+    const codigo = inputCodigo.value
+    procuraItemPorCodigo(codigo)
+}
+inputNome.onkeyup = function () {
+    const nome = inputNome.value
+    procuraItemPorNome(nome)
+}
+
 arrowRight.onclick = function () {
     itemAtual = listaItens[listaItens.indexOf(itemAtual) + 1]
     if (itemAtual === undefined) {
@@ -149,7 +158,11 @@ btnAdicionarItem.onclick = function () {
     adicionarLinhaTabela(quant, carrinho.length - 1,)
 }
 
-inputCodigo.onkeyup = function () {
-    const codigo = inputCodigo.value
-    procuraItemPorCodigo(codigo)
+window.onload = function () {
+    const listaCategorias = ["Acessórios", "Brinquedos", "Rações"]
+    const listaCategoriasDB = ["Acessorio", "Brinquedo", "Racao"]
+    listaCategorias.forEach((item, index) => {
+        selectCategoria.innerHTML += `<option value="${listaCategoriasDB[index]}">${item}</option>`
+    });
+
 }
