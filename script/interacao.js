@@ -3,6 +3,7 @@ const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
 const selectCategoria = document.getElementById("select-categoria")
+const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
 const codigoPreview = document.querySelector(".codigo-preview")
@@ -20,6 +21,13 @@ const tabelaCarrinho = document.querySelector(".tabela-carrinho")
 
 let itemAtual = ''
 let carrinho = []
+let listaFiltrada = []
+
+
+
+//          === === === FUNCOES === === ===
+
+//          === === === Calculos e redundancias === === ===
 
 inputNome.onfocus = function () {
     inputCodigo.value = ""
@@ -29,9 +37,13 @@ inputCodigo.onfocus = function () {
     inputNome.value = ""
 }
 
-//          === === === FUNCOES === === ===
-
-    //          === === === Calculos e redundancias === === ===
+const checarLista = function () {
+    if (checkCategoria.checked) {
+        return listaFiltrada
+    } else {
+        return listaItens
+    }
+}
 const verificaImgPreview = item => {
     if (item.url != undefined) {
         const url = '<img src="' + item.url + '">'
@@ -54,7 +66,7 @@ function calculaEstoque(item) {
     }
 }
 
-    //          === === === Main === === ===
+//          === === === Main === === ===
 function procuraItemPorNome(nome) {
     console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
@@ -127,26 +139,42 @@ inputNome.onkeyup = function () {
     const nome = inputNome.value
     procuraItemPorNome(nome)
 }
+checkCategoria.onchange = function () {
+    if (checkCategoria.checked) {
+        mostraItemPreview(listaFiltrada[0])
+    } else {
+        mostraItemPreview(listaItens[0])
+    }
+}
+selectCategoria.onchange = function () {
+    listaFiltrada = listaItens.filter(obj => obj.categoria === selectCategoria.value)
+    if (checkCategoria.checked) {
+        mostraItemPreview(listaFiltrada[0])
+    }
+}
 
+//  Item anterior e Proximo item
 arrowRight.onclick = function () {
-    itemAtual = listaItens[listaItens.indexOf(itemAtual) + 1]
+    let listaAtual = checarLista()
+    itemAtual = listaAtual[listaAtual.indexOf(itemAtual) + 1]
     if (itemAtual === undefined) {
-        itemAtual = listaItens[0]
+        itemAtual = listaAtual[0]
         console.log('retornou a 0');
     }
     mostraItemPreview(itemAtual)
-    console.log(itemAtual);
 }
 
+
 arrowLeft.onclick = function () {
-    //se for o primeiro item ou vazio ==>  volta pro ultimo item
-    itemAtual = listaItens[listaItens.indexOf(itemAtual) - 1]
+    let listaAtual = checarLista()
+    itemAtual = listaAtual[listaAtual.indexOf(itemAtual) - 1]
     if (itemAtual === undefined) {
-        itemAtual = listaItens[listaItens.length - 1]
+        itemAtual = listaItens[listaItens.length -1]
         console.log('retornou ao max');
     }
     mostraItemPreview(itemAtual)
 }
+
 
 btnAdicionarItem.onclick = function () {
     listaItens[0].vendaAGranel(10)
