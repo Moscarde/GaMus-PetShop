@@ -7,18 +7,17 @@ const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
 const infoPreview = document.querySelector(".info-preview")
-// const codigoPreview = document.querySelector(".codigo-preview")
-// const nomePreview = document.querySelector(".nome-preview")
-// const valorPreview = document.querySelector(".valor-preview")
-// const estoquePreview = document.querySelector(".estoque-preview")
 const imgPreview = document.querySelector(".img-preview")
 const arrowLeft = document.querySelector(".preview-arrow-left")
 const arrowRight = document.querySelector(".preview-arrow-right")
 
 //Adicionar ao carrinho
 const inputQuant = document.getElementById("input-quant")
+const selectTipo = document.getElementById("select-tipo")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
 const tabelaCarrinho = document.querySelector(".tabela-carrinho")
+
+const btnFecharCarrinho = document.querySelector(".btn-fechar-carrinho")
 
 let itemAtual = ''
 let carrinho = []
@@ -68,25 +67,36 @@ const geraCodigoCategoria = item =>{
         <p><strong>Nome:</strong> ${item.nome}</p>
         <p><strong>Valor Kg:</strong> ${item.valorKg}</p>
         <p><strong>Valor Saco:</strong> ${item.valorSaco}</p>
-        <p><strong>Estoque:</strong> ${item.estoqueSaco} sacos -> ${item.estoqueSaco * 15} quilos</p>`
+        <p><strong>Estoque:</strong> ${item.estoqueSaco} sacos -> ${item.estoqueKg} quilos</p>`
 
     }
     return htmlCode
 }
+const mudaSelectTipo = item => {
+    let selectHTML = ''
+    if (item.constructor.name == "Racao") {
+        selectHTML = `<option value="kg">kg</option>
+        <option value="saco">Saco</option>`
+    }
+    else {
+        selectHTML = `<option value="unidade">unidade</option>`
+    }
+    selectTipo.innerHTML = selectHTML
+}
 
 //          === === === Main === === ===
-function procuraItemPorNome(nome) {
+const procuraItemPorNome = nome => {
     console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
     mostraItemPreview(itemAtual)
 }
 
-function procuraItemPorCodigo(codigo) {
+const procuraItemPorCodigo = codigo => {
     itemAtual = listaItens.find(item => item.codigoItem == codigo)
     mostraItemPreview(itemAtual)
 }
 
-function mostraItemPreview(item) {
+const mostraItemPreview = item => {
     let previewHTML = ''
 
     if (item != undefined) {
@@ -102,18 +112,33 @@ function mostraItemPreview(item) {
     
     infoPreview.innerHTML = previewHTML;
     imgPreview.innerHTML = previewUrlItem;
+    mudaSelectTipo(item)
 }
 
-function adicionarLinhaTabela(quant, index) {
+const adicionaLinhaTabela = (novoItem, tipo) => {
     let estrutura = `
     <tr>
-        <td>${carrinho[index].codigoItem}</td>
-        <td>${carrinho[index].nome}</td>
-        <td>${quant}</td>
-        <td class="valor-item">${carrinho[index].valorKg}</td>
+        <td>${novoItem.codigoItem}</td>
+        <td>${novoItem.nome}</td>
+        <td>${novoItem.quantidadeVenda}</td>
+        <td>${tipo}</td>
+        <td class="valor-item">${novoItem.valorVenda}</td>
     </tr>
     `
     tabelaCarrinho.innerHTML += estrutura
+}
+
+const adicionaCarrinho = (item, quant, tipo) => {
+    let itemCarrinho = structuredClone(item)
+    itemCarrinho.calculaVenda = item.calculaVenda
+
+    if (!item.checaEstoque(quant, tipo)) {
+        console.log('Estoque insuficiente')
+        return
+    }
+    itemCarrinho.calculaVenda(quant, tipo)
+    carrinho.push(itemCarrinho)
+    adicionaLinhaTabela(itemCarrinho, tipo)
 }
 
 
@@ -158,33 +183,29 @@ arrowRight.onclick = function () {
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) + 1]
     if (itemAtual === undefined) {
         itemAtual = listaAtual[0]
-        console.log('retornou a 0');
     }
     mostraItemPreview(itemAtual)
 }
-
 
 arrowLeft.onclick = function () {
     let listaAtual = checarLista()
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) - 1]
     if (itemAtual === undefined) {
         itemAtual = listaItens[listaItens.length -1]
-        console.log('retornou ao max');
     }
     mostraItemPreview(itemAtual)
 }
 
-
 btnAdicionarItem.onclick = function () {
-    listaItens[0].vendaAGranel(10)
-    return
-    let quant = inputQuant.value
-    let itemCarrinho = structuredClone(listaItens[iItem])
-    carrinho.push(itemCarrinho)
-    console.log(carrinho)
-    adicionarLinhaTabela(quant, carrinho.length - 1,)
+    let quantidade = inputQuant.value
+    let tipo = selectTipo.value
+    adicionaCarrinho(itemAtual, quantidade, tipo)
+    mostraItemPreview(itemAtual)
 }
 
+btnFecharCarrinho.onclick = function () {
+    console.log(carrinho);
+}
 window.onload = function () {
     const listaCategorias = ["Acessórios", "Brinquedos", "Rações"]
     const listaCategoriasDB = ["Acessorio", "Brinquedo", "Racao"]
