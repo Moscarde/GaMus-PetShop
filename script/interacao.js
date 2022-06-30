@@ -6,10 +6,11 @@ const selectCategoria = document.getElementById("select-categoria")
 const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
-const codigoPreview = document.querySelector(".codigo-preview")
-const nomePreview = document.querySelector(".nome-preview")
-const valorPreview = document.querySelector(".valor-preview")
-const estoquePreview = document.querySelector(".estoque-preview")
+const infoPreview = document.querySelector(".info-preview")
+// const codigoPreview = document.querySelector(".codigo-preview")
+// const nomePreview = document.querySelector(".nome-preview")
+// const valorPreview = document.querySelector(".valor-preview")
+// const estoquePreview = document.querySelector(".estoque-preview")
 const imgPreview = document.querySelector(".img-preview")
 const arrowLeft = document.querySelector(".preview-arrow-left")
 const arrowRight = document.querySelector(".preview-arrow-right")
@@ -55,15 +56,22 @@ const verificaImgPreview = item => {
     }
 }
 
-function calculaTipo(item) {
-    let estoque = ''
-    if (item.constructor.name == "Racao") {
-        estoque = `${item.estoqueSaco} sacos -> ${item.estoqueSaco * 15} quilos`
-        return [item.valorKg, estoque] 
+const geraCodigoCategoria = item =>{
+    let htmlCode = ''
+    if (item.constructor.name != 'Racao') {
+        htmlCode = `<p><strong>Código:</strong> ${item.codigoItem}</p>
+        <p><strong>Nome:</strong> ${item.nome}</p>
+        <p><strong>Valor:</strong> ${item.valor}</p>
+        <p><strong>Estoque:</strong> ${item.estoque}</p>`
     } else {
-        estoque = item.estoque + ' un.'
-        return [item.valor, estoque] 
+        htmlCode = `<p><strong>Código:</strong> ${item.codigoItem}</p>
+        <p><strong>Nome:</strong> ${item.nome}</p>
+        <p><strong>Valor Kg:</strong> ${item.valorKg}</p>
+        <p><strong>Valor Saco:</strong> ${item.valorSaco}</p>
+        <p><strong>Estoque:</strong> ${item.estoqueSaco} sacos -> ${item.estoqueSaco * 15} quilos</p>`
+
     }
+    return htmlCode
 }
 
 //          === === === Main === === ===
@@ -79,29 +87,20 @@ function procuraItemPorCodigo(codigo) {
 }
 
 function mostraItemPreview(item) {
-    let previewCodigoItem = ''
-    let previewNomeItem = ''
-    let previewValorItem = ''
-    let previewEstoqueItem = ''
-    let previewUrlItem = ''
+    let previewHTML = ''
 
     if (item != undefined) {
-        previewCodigoItem = item.codigoItem
-        previewNomeItem = item.nome
-        previewValorItem = calculaTipo(item)[0]
-        previewEstoqueItem = calculaTipo(item)[1]
+        previewHTML = geraCodigoCategoria(item)
         previewUrlItem = verificaImgPreview(item)
     } else {
-        previewCodigoItem = "Não encontrado"
-        previewNomeItem = "Não encontrado"
-        previewValorItem = "Não encontrado"
-        previewEstoqueItem = "Não encontrado"
+        previewHTML = `<p><strong>Código:</strong> Item não encontrado</p>
+        <p><strong>Nome:</strong> Item não encontrado</p>
+        <p><strong>Valor:</strong> Item não encontrado</p>
+        <p><strong>Estoque:</strong> Item não encontrado</p>`
         previewUrlItem = '<img src="' + './img/erro-item-nao-encontrado.jpg' + '">'
     }
-    codigoPreview.innerHTML = previewCodigoItem
-    nomePreview.innerHTML = previewNomeItem;
-    valorPreview.innerHTML = previewValorItem;
-    estoquePreview.innerHTML = previewEstoqueItem;
+    
+    infoPreview.innerHTML = previewHTML;
     imgPreview.innerHTML = previewUrlItem;
 }
 
