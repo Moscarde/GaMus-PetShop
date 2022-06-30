@@ -238,4 +238,19 @@ main {
 .th-nome {
     width: 60%;
 }
+/* estoque */
+.tabela-estoque {
+    border: 1px solid #C0C0C0;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tabela-estoque td,
+.tabela-estoque th {
+    border: 1px solid #C0C0C0;
+    padding: 0.1em 1em;
+    vertical-align: middle;
+}
 

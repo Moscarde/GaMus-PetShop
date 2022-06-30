@@ -29,6 +29,7 @@ navVendas.onclick = function () {
 }
 navEstoque.onclick = function () {
     switchPainel(painelEstoque, this)
+    atualizaEstoque()
 }
 navCadastro.onclick = function () {
     switchPainel(painelCadastro, this)

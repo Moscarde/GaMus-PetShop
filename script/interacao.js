@@ -15,7 +15,8 @@ const arrowRight = document.querySelector(".preview-arrow-right")
 const inputQuant = document.getElementById("input-quant")
 const selectTipo = document.getElementById("select-tipo")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
-const tabelaCarrinho = document.querySelector(".tabela-carrinho")
+const tabelaCarrinho = document.querySelector(".tabela-carrinho-linhas")
+const tabelaEstoque = document.querySelector(".tabela-estoque-linhas")
 
 const btnFecharCarrinho = document.querySelector(".btn-fechar-carrinho")
 
@@ -139,6 +140,22 @@ const adicionaCarrinho = (item, quant, tipo) => {
     itemCarrinho.calculaVenda(quant, tipo)
     carrinho.push(itemCarrinho)
     adicionaLinhaTabela(itemCarrinho, tipo)
+}
+
+const atualizaEstoque = () => {
+    console.log('kk');
+    listaItens.forEach(item => {
+        let estrutura = `
+    <tr>
+        <td>${item.codigoItem}</td>
+        <td>${item.nome}</td>
+        <td>${item.quantidadeVenda}</td>
+        <td>kkkkkkkkkk</td>
+        <td class="valor-item">${item.valorVenda}</td>
+    </tr>
+    `
+    tabelaEstoque.innerHTML += estrutura
+    })
 }
 
 
