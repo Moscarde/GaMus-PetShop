@@ -3,6 +3,8 @@ const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
 const selectCategoria = document.getElementById("select-categoria")
+
+
 const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
@@ -16,13 +18,17 @@ const inputQuant = document.getElementById("input-quant")
 const selectTipo = document.getElementById("select-tipo")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
 const tabelaCarrinho = document.querySelector(".tabela-carrinho-linhas")
-const tabelaEstoque = document.querySelector(".tabela-estoque-linhas")
+const tabelaEstoqueRacao = document.querySelector(".tabela-racao-linhas")
+const tabelaEstoqueBrinquedo = document.querySelector(".tabela-brinquedo-linhas")
+const tabelaEstoqueAcessorio = document.querySelector(".tabela-acessorio-linhas")
 
 const btnFecharCarrinho = document.querySelector(".btn-fechar-carrinho")
+
 
 let itemAtual = ''
 let carrinho = []
 let listaFiltrada = []
+
 
 
 
@@ -56,7 +62,7 @@ const verificaImgPreview = item => {
     }
 }
 
-const geraCodigoCategoria = item =>{
+const geraCodigoCategoria = item => {
     let htmlCode = ''
     if (item.constructor.name != 'Racao') {
         htmlCode = `<p><strong>Código:</strong> ${item.codigoItem}</p>
@@ -110,7 +116,7 @@ const mostraItemPreview = item => {
         <p><strong>Estoque:</strong> Item não encontrado</p>`
         previewUrlItem = '<img src="' + './img/erro-item-nao-encontrado.jpg' + '">'
     }
-    
+
     infoPreview.innerHTML = previewHTML;
     imgPreview.innerHTML = previewUrlItem;
     mudaSelectTipo(item)
@@ -143,19 +149,51 @@ const adicionaCarrinho = (item, quant, tipo) => {
 }
 
 const atualizaEstoque = () => {
-    console.log('kk');
+    tabelaEstoqueRacao.innerHTML = ""
+    tabelaEstoqueBrinquedo.innerHTML = ""
+    tabelaEstoqueAcessorio.innerHTML = ""
+
     listaItens.forEach(item => {
-        let estrutura = `
-    <tr>
-        <td>${item.codigoItem}</td>
-        <td>${item.nome}</td>
-        <td>${item.quantidadeVenda}</td>
-        <td>kkkkkkkkkk</td>
-        <td class="valor-item">${item.valorVenda}</td>
-    </tr>
-    `
-    tabelaEstoque.innerHTML += estrutura
-    })
+        if (item.constructor.name == "Racao") {
+            // <!--codigo especie nome pesosaco estoquesaco valorsaco valorkg -->
+            let estrutura = ` 
+                <tr>
+                    <td>${item.codigoItem}</td>
+                    <td>${item.especie}</td>
+                    <td>${item.nome}</td>
+                    <td>${item.pesoSaco} kg</td>
+                    <td>${item.estoqueSaco}</td>
+                    <td>${item.valorSaco}</td>
+                    <td>${item.valorKg}</td>
+                </tr>
+                `
+            tabelaEstoqueRacao.innerHTML += estrutura
+        }
+        else if (item.constructor.name == "Brinquedo") {
+            let estrutura = ` 
+                <tr>
+                    <td>${item.codigoItem}</td>
+                    <td>${item.nome}</td>
+                    <td>${item.estoque}</td>
+                    <td>${item.valor}</td>
+                </tr>
+                `
+            tabelaEstoqueBrinquedo.innerHTML += estrutura
+        }
+        else if (item.constructor.name == "Acessorio") {
+            let estrutura = ` 
+                <tr>
+                    <td>${item.codigoItem}</td>
+                    <td>${item.nome}</td>
+                    <td>${item.estoque}</td>
+                    <td>${item.valor}</td>
+                </tr>
+                `
+            tabelaEstoqueAcessorio.innerHTML += estrutura
+        }
+    }
+    )
+    
 }
 
 
@@ -208,7 +246,7 @@ arrowLeft.onclick = function () {
     let listaAtual = checarLista()
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) - 1]
     if (itemAtual === undefined) {
-        itemAtual = listaItens[listaItens.length -1]
+        itemAtual = listaItens[listaItens.length - 1]
     }
     mostraItemPreview(itemAtual)
 }
@@ -223,6 +261,11 @@ btnAdicionarItem.onclick = function () {
 btnFecharCarrinho.onclick = function () {
     console.log(carrinho);
 }
+
+    //Cadastro
+
+
+
 window.onload = function () {
     const listaCategorias = ["Acessórios", "Brinquedos", "Rações"]
     const listaCategoriasDB = ["Acessorio", "Brinquedo", "Racao"]

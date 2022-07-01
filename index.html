@@ -20,117 +20,253 @@
             <li><a href="#" class="nav-estoque">Tabela Estoque</a></li>
             <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
         </ul>
-        <div class="painel-vendas  painel-ativo">
-            <section>
-                <div class="cliente sessao">
-                    <label for="nomecliente">Nome</label>
-                    <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" />
 
-                    <label for="endereco">Endereço</label>
-                    <input type="text" id="endereco" class="input-padrao" placeholder="Rua Um Numero: 2" />
+        <div class="painel-vendas">
+            <section class="dados-cliente sessao">
+                <label for="nomecliente">Nome</label>
+                <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" />
 
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" />
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" class="input-padrao" placeholder="Rua Um Numero: 2" />
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" />
+            </section>
+            <section class="adicionar-item sessao">
+                <div class="pesquisa">
+                    <label for="codigo">Por código</label>
+                    <input type="text" id="input-codigo" />
+
+                    <label for="lista-itens">Por nome</label>
+                    <input type="text" id="input-nome" />
+                    <button class="btn btn-procurar-item">Procurar Item</button>
                 </div>
-                <div class="adicionar-item sessao">
-                    <div class="pesquisa">
-                        <label for="codigo">Por código</label>
-                        <input type="text" id="input-codigo" />
-
-                        <label for="lista-itens">Por nome</label>
-                        <input type="text" id="input-nome" />
-                        <button class="btn-procurar-item">Procurar Item</button>
-                    </div>
-                    <div class="categoria">
-                        <input type="checkbox" id="check-categoria" name="check-categoria">
-                        <label for="check-categoria">Filtrar categoria</label>
-                        <select name="tipo" id="select-categoria">
-                            <!-- Puxado do banco de dados -->
-                            <option value="" disabled selected>Selecionar categoria</option>
-                        </select>
-                    </div>
-
-                    <div class="preview">
-                        <img src="./img/arrow.png" class="preview-arrow-left">
-                        <div class="preview-item">
-                            <div class="img-preview">
-                            </div>
-                            <div class="info-preview">
-                                <p><strong>Código:</strong> <em>Código do item</em></p>
-                                <p><strong>Nome:</strong> <em>Nome do item</em></p>
-                                <p><strong>Valor:</strong> <em>Valor do item</em></p>
-                                <p><strong>Estoque:</strong> <em>Quantidade em estoque do item</em></p>
-                            </div>
-                        </div>
-                        <img src="./img/arrow.png" class="preview-arrow-right">
-                    </div>
-
-                    <label for="quantidade">Quantidade</label>
-                    <input type="number" id="input-quant" />
-                    <label for="lista-tipo">Tipo</label>
-                    <select name="tipo" id="select-tipo">
-                        <option value="unidade">unidade</option>
-                        <option value="kg">kg</option>
-                        <option value="saco">Saco</option>
+                <div class="categoria">
+                    <input type="checkbox" id="check-categoria" name="check-categoria">
+                    <label for="check-categoria">Filtrar categoria</label>
+                    <select name="tipo" id="select-categoria">
+                        <!-- Puxado do banco de dados -->
+                        <option value="" disabled selected>Selecionar categoria</option>
                     </select>
-
-                    <button class="btn-adicionar-item">Adicionar ao carrinho</button>
                 </div>
-                <div class="carrinho sessao">
-                    <table class="demo">
-                        <caption>Carrinho</caption>
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th class="th-nome">Nome</th>
-                                <th>Quant.</th>
-                                <th>Tipo</th>
-                                <th>Valor Total Item</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tabela-carrinho-linhas">
-                            <!-- <tr>
+
+                <div class="preview">
+                    <img src="./img/arrow.png" class="preview-arrow-left">
+                    <div class="preview-item">
+                        <div class="img-preview">
+                        </div>
+                        <div class="info-preview">
+                            <p><strong>Código:</strong> <em>Código do item</em></p>
+                            <p><strong>Nome:</strong> <em>Nome do item</em></p>
+                            <p><strong>Valor:</strong> <em>Valor do item</em></p>
+                            <p><strong>Estoque:</strong> <em>Quantidade em estoque do item</em></p>
+                        </div>
+                    </div>
+                    <img src="./img/arrow.png" class="preview-arrow-right">
+                </div>
+
+                <label for="quantidade">Quantidade</label>
+                <input type="number" id="input-quant" />
+                <label for="lista-tipo">Tipo</label>
+                <select name="tipo" id="select-tipo">
+                    <option value="unidade">unidade</option>
+                    <option value="kg">kg</option>
+                    <option value="saco">Saco</option>
+                </select>
+
+                <button class="btn btn-adicionar-item">Adicionar ao carrinho</button>
+            </section>
+            <section class="carrinho sessao">
+                <table class="demo">
+                    <caption>Carrinho</caption>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th class="th-nome">Nome</th>
+                            <th>Quant.</th>
+                            <th>Tipo</th>
+                            <th>Valor Total Item</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-carrinho-linhas">
+                        <!-- <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr> -->
-                        </tbody>
-                    </table>
-                </div>
-                <input type="submit" class="btn-fechar-carrinho" value="Fechar Carrinho" />
+                    </tbody>
+                </table>
             </section>
-
+            <input type="submit" class="btn-fechar-carrinho" value="Fechar Carrinho" />
         </div>
         <div class="painel-estoque ">
-            <table class="tabela-estoque">
-                <caption>Carrinho</caption>
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th class="th-nome">Nome</th>
-                        <th>Quant.</th>
-                        <th>Tipo</th>
-                        <th>Valor Total Item</th>
-                    </tr>
-                </thead>
-                <tbody class="tabela-estoque-linhas">
-                    <!-- <tr>
+            <section class="estoque-racao sessao">
+                <!-- Rações -->
+                <table class="tabela-estoque">
+                    <caption>Rações</caption>
+                    <thead>
+                        <tr>
+                            <th class="th-codigo">Código</th>
+                            <th class="th-especie">Especie</th>
+                            <th class="th-nome">Nome</th>
+                            <th class="th-peso-saco">Peso Saco</th>
+                            <th class="th-estoque-saco">Estoque Saco</th>
+                            <th class="th-valor-saco">Valor Saco</th>
+                            <th class="th-valor-kg">Valor Kg</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-racao-linhas">
+                        <!-- <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr> -->
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="estoque-brinquedos sessao">
+                <!-- Brinquedos -->
+                <table class="tabela-estoque">
+                    <caption>Brinquedos</caption>
+                    <thead>
+                        <tr>
+                            <th class="th-codigo">Código</th>
+                            <th class="th-nome">Nome</th>
+                            <th class="th-estoque">Estoque</th>
+                            <th class="th-valor">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-brinquedo-linhas">
+                        <!-- <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr> -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="estoque-acessorios sessao">
+                <!-- Acessórios -->
+                <table class="tabela-estoque">
+                    <caption>Acessórios</caption>
+                    <thead>
+                        <tr>
+                            <th class="th-codigo">Código</th>
+                            <th class="th-nome">Nome</th>
+                            <th class="th-estoque">Estoque</th>
+                            <th class="th-valor">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-acessorio-linhas">
+                        <!-- <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr> -->
+                    </tbody>
+                </table>
+            </section>
         </div>
-        <div class="painel-cadastro ">
-            Conteúdo cadastro
+        <div class="painel-cadastro  visible">
+            <section class="cadastro sessao">
+                <div class="selecao-categoria">
+                    <label for="select-categoria-cadastro">Selecione a categoria do item:</label>
+                    <select name="tipo" id="select-categoria-cadastro">
+                        <!-- Puxado do banco de dados -->
+                        <option value="" disabled="" selected="">Selecionar categoria</option>
+                        <option value="Acessorio">Acessórios</option>
+                        <option value="Brinquedo">Brinquedos</option>
+                        <option value="Racao">Rações</option>
+
+                    </select>
+                </div>
+
+                <section class="categoria-racao">
+                    <div class="cadastro-racao">
+                        <div class="racao-dados">
+                            <label for="cadastro-racao-nome">Nome da ração</label>
+                            <input type="text" id="cadastro-racao-nome" class="cadastro-input"
+                                placeholder="Ração Aaa Adultos" />
+
+                            <label for="cadastro-racao-especie">Especie</label>
+                            <input type="text" id="cadastro-racao-especie" class="cadastro-input"
+                                placeholder="Cachorros" />
+
+                            <label for="cadastro-racao-sabor">Sabor</label>
+                            <input type="text" id="cadastro-racao-sabor" class="cadastro-input" placeholder="Carne" />
+
+                            <label for="cadastro-racao-sabor">Peso saco</label>
+                            <input type="text" id="cadastro-racao-sabor" class="cadastro-input" placeholder="Carne" />
+                        </div>
+                        <div class="racao-quantidade-e-valores">
+                            <label for="cadastro-racao-quantidade">Quantidade</label>
+                            <input type="text" id="cadastro-racao-quantidade" class="cadastro-input" />
+
+                            <label for="cadastro-racao-valor-saco">Valor saco</label>
+                            <input type="text" id="cadastro-racao-valor-saco" class="cadastro-input" />
+
+                            <label for="cadastro-racao-valor-kg">Valor kg</label>
+                            <input type="text" id="cadastro-racao-valor-kg" class="cadastro-input" />
+                        </div>
+                    </div>
+                    <button class="btn btn-cadastro">Adicionar item ao banco de dados</button>
+                </section>
+
+                <section class="categoria-brinquedo">
+                    <div class="cadastro-brinquedo">
+                        <div class="dados">
+                            <label for="cadastro-brinquedo-nome">Nome do brinquedo</label>
+                            <input type="text" id="cadastro-brinquedo-nome" class="cadastro-input"/>
+
+                            <label for="cadastro-brinquedo-especie">Especie</label>
+                            <input type="text" id="cadastro-brinquedo-especie" class="cadastro-input"/>
+                        </div>
+                        <div class="quantidade-e-valores">
+                            <label for="cadastro-brinquedo-quantidade">Quantidade</label>
+                            <input type="text" id="cadastro-brinquedo-quantidade" class="cadastro-input" />
+
+                            <label for="cadastro-brinquedo-valor">Valor</label>
+                            <input type="text" id="cadastro-brinquedo-valor" class="cadastro-input" />
+                        </div>
+                    </div>
+                    <button class="btn btn-cadastro">Adicionar item ao banco de dados</button>
+                </section>
+
+                <section class="categoria-acessorio">
+                    <div class="cadastro-acessorio">
+                        <div class="dados">
+                            <label for="cadastro-acessorio-nome">Nome do Acessório</label>
+                            <input type="text" id="cadastro-acessorio-nome" class="cadastro-input"/>
+
+                            <label for="cadastro-acessorio-especie">Especie</label>
+                            <input type="text" id="cadastro-acessorio-especie" class="cadastro-input"/>
+                        </div>
+                        <div class="quantidade-e-valores">
+                            <label for="cadastro-acessorio-quantidade">Quantidade</label>
+                            <input type="text" id="cadastro-acessorio-quantidade" class="cadastro-input" />
+
+                            <label for="cadastro-acessorio-valor">Valor</label>
+                            <input type="text" id="cadastro-acessorio-valor" class="cadastro-input" />
+                        </div>
+                    </div>
+                    <button class="btn btn-cadastro">Adicionar item ao banco de dados</button>
+                </section>
+
+            </section> <!--sessao cadastro-->
+
         </div>
+        <!--Final painel-cadastro -->
     </main>
     <script src="./script/index.js"></script>
     <script src="./script/main.js"></script>
     <script src="./script/interacao.js"></script>
+    <script src="./script/cadastro.js"></script>
 </body>
 
 </html>

@@ -12,14 +12,14 @@ navList = [navVendas, navEstoque, navCadastro]
 function switchPainel(painel, nav) {
     //removendo classe de todos
     painelList.forEach(element => {
-        element.classList.remove('painel-ativo')
+        element.classList.remove('visible')
     });
     navList.forEach(element => {
         element.classList.remove('nav-ativo')
     })
 
     //aplicando classe nos selecionados
-    painel.classList.add('painel-ativo')
+    painel.classList.add('visible')
     nav.classList.add('nav-ativo')
     
 }

@@ -22,7 +22,7 @@ header {
 
 main {
     background: var(--cor6);
-    width: 700px;
+    width: 900px;
     min-height: 700px;
     margin: 0 auto 100px;
     border-radius: 10px 10px 0 0;
@@ -66,9 +66,7 @@ main {
     padding: 2.3em;
 }
 
-.painel-ativo {
-    display: block;
-}
+
 
 .nav-ativo {
     background-color: var(--cor6);
@@ -85,12 +83,12 @@ main {
     margin-top: 0.8em;
 }
 
-.cliente label {
+.dados-cliente label {
     display: block;
     margin-bottom: 0.5em;
 }
 
-.cliente input {
+.input-padrao {
     margin-bottom: 1em;
     padding: 0.5em;
     width: 400px;
@@ -123,10 +121,7 @@ main {
     padding: 0.5em;
     width: 80px;
 }
-.btn-procurar-item {
-    padding: 0.5em;
-    margin: 0 0.3em 0 0.7em;
-}
+
 #check-categoria{
     margin-right: -4px;
 }
@@ -153,14 +148,16 @@ main {
 #input-nome:focus,
 #select-categoria:focus,
 #input-quant:focus,
-#select-tipo:focus {
+#select-tipo:focus,
+#select-categoria-cadastro:focus {
     outline-color: var(--cor2);
 }
 
-#select-categoria{
+#select-categoria, #select-categoria-cadastro{
     padding: 0.5em;
     width: 180px;
 }
+
 
 .preview-arrow-left:hover,
 .preview-arrow-right:hover {
@@ -214,7 +211,7 @@ main {
     padding: 0.5em;
     width: 120px;
 }
-.btn-adicionar-item {
+.btn{
     padding: 0.5em;
     margin: 0 0.3em 0 0.7em;
 }
@@ -235,8 +232,8 @@ main {
     vertical-align: middle;
 }
 
-.th-nome {
-    width: 60%;
+.th-codigo, .th-peso-saco, .th-estoque-saco, .th-valor-saco, .th-valor-kg, .th-estoque, .th-valor  {
+    width: 9%;
 }
 /* estoque */
 .tabela-estoque {
@@ -254,3 +251,59 @@ main {
     vertical-align: middle;
 }
 
+/* Cadastro */
+.categoria-racao, .categoria-brinquedo, .categoria-acessorio{
+    display: none;
+}
+
+
+.cadastro label{
+    display: block;
+    margin-bottom: 0.5em;
+}
+.cadastro-racao{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around
+}
+.selecao-categoria{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.cadastro-input{
+    margin-bottom: 1em;
+    padding: 0.5em;
+    width: 300px;
+    display: block;
+}
+.btn-cadastro{
+    display: block;
+    margin: 0 auto;
+}
+
+.cadastro-brinquedo{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around
+}
+.selecao-brinquedo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.cadastro-acessorio{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around
+}
+.selecao-acessorio{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.visible {
+    display: block;
+}
