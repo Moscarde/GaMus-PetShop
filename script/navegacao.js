@@ -9,6 +9,7 @@ const painelCadastro = document.querySelector(".painel-cadastro")
 painelList = [painelVendas, painelEstoque, painelCadastro]
 navList = [navVendas, navEstoque, navCadastro]
 
+//troca o painel e o visual da aba
 function switchPainel(painel, nav) {
     //removendo classe de todos
     painelList.forEach(element => {

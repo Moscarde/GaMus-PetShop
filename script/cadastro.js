@@ -1,19 +1,23 @@
+//navegacao e visual
 const selectCategoriaCadastro = document.getElementById("select-categoria-cadastro")
 const cadastroRacao = document.querySelector(".categoria-racao")
 const cadastroBrinquedo = document.querySelector(".categoria-brinquedo")
 const cadastroAcessorio = document.querySelector(".categoria-acessorio")
-const btnCadastro = document.querySelectorAll(".btn-cadastro")
+const btnCadastroList = document.querySelectorAll(".btn-cadastro")
+
 //inputs Brinquedo
 const cadastroBrinquedoNome = document.getElementById("cadastro-brinquedo-nome")
 const cadastroBrinquedoEspecie = document.getElementById("cadastro-brinquedo-especie")
 const cadastroBrinquedoQuantidade = document.getElementById("cadastro-brinquedo-quantidade")
 const cadastroBrinquedoValor = document.getElementById("cadastro-brinquedo-valor")
-//inputs Brinquedo
+
+//inputs Acessorio
 const cadastroAcessorioNome = document.getElementById("cadastro-acessorio-nome")
 const cadastroAcessorioEspecie = document.getElementById("cadastro-acessorio-especie")
 const cadastroAcessorioQuantidade = document.getElementById("cadastro-acessorio-quantidade")
 const cadastroAcessorioValor = document.getElementById("cadastro-acessorio-valor")
-//inputs Brinquedo
+
+//inputs Racao
 const cadastroRacaoNome = document.getElementById("cadastro-racao-nome")
 const cadastroRacaoEspecie = document.getElementById("cadastro-racao-especie")
 const cadastroRacaoSabor = document.getElementById("cadastro-racao-sabor")
@@ -22,6 +26,9 @@ const cadastroRacaoQuantidade = document.getElementById("cadastro-racao-quantida
 const cadastroRacaoValorSaco = document.getElementById("cadastro-racao-valor-saco")
 const cadastroRacaoValorKg = document.getElementById("cadastro-racao-valor-kg")
 
+//=== === === FUNCOES === === ===
+
+//faz o cadastro de um novo item no banco de dados
 const cadastrarNovoItem = (categoria) => {
     if (categoria == "Racao") {
         const nome = cadastroRacaoNome.value
@@ -56,8 +63,19 @@ const cadastrarNovoItem = (categoria) => {
     
 }
 
+//limpa todos os inputs do cadastro após clique no botao
+const limpaInputs = () => {
+    const inputList = document.querySelector(".cadastro").querySelectorAll("input")
+    inputList.forEach(input => {
+        input.value=""
+    });
+}
 
 
+
+//=== === === ONCLICK === === ===
+
+//altera entre os formularios das categorias
 selectCategoriaCadastro.onchange = function () {
     let categoria = selectCategoriaCadastro.value
 
@@ -75,14 +93,9 @@ selectCategoriaCadastro.onchange = function () {
         cadastroAcessorio.classList.add("visible")
     }
 }
-const limpaInputs = () => {
-    const inputList = document.querySelector(".cadastro").querySelectorAll("input")
-    inputList.forEach(input => {
-        input.value=""
-    });
-}
 
-btnCadastro.forEach( btn => {
+//chama a funcao de cadastro e limpa inputs
+btnCadastroList.forEach( btn => {
     btn.onclick = function () {
         cadastrarNovoItem(selectCategoriaCadastro.value)
         limpaInputs()

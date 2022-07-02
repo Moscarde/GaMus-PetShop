@@ -3,6 +3,7 @@ const tabelaEstoqueBrinquedo = document.querySelector(".tabela-brinquedo-linhas"
 const tabelaEstoqueAcessorio = document.querySelector(".tabela-acessorio-linhas")
 
 //atualizaEstoque está sendo chamada no index.js
+//atualiza o estoque toda vez que for aberto a aba
 const atualizaEstoque = () => {
     tabelaEstoqueRacao.innerHTML = ""
     tabelaEstoqueBrinquedo.innerHTML = ""

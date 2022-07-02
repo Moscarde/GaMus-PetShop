@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>GaMus PetShop - Vendas</title>
 </head>
 
@@ -23,16 +23,18 @@
 
         <div class="painel-vendas  visible">
             <section class="dados-cliente sessao">
-                <label for="nomecliente">Nome</label>
-                <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" />
+                <h2 class="titulo">Dados Cliente</h2>
+                <label for="cliente-nome">Nome</label>
+                <input type="text" id="cliente-nome" class="input-padrao" placeholder="Nome Cliente" value="Teste" />
 
-                <label for="endereco">Endereço</label>
-                <input type="text" id="endereco" class="input-padrao" placeholder="Rua Um Numero: 2" />
+                <label for="cliente-endereco">Endereço</label>
+                <input type="text" id="cliente-endereco" class="input-padrao" placeholder="Rua Um Numero: 2" value="Rue xxxx"/>
 
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" />
+                <label for="cliente-telefone">Telefone</label>
+                <input type="tel" id="cliente-telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" value="21 99999 99999"/>
             </section>
             <section class="adicionar-item sessao">
+                <h2 class="titulo">Pesquisa Itens</h2>
                 <div class="pesquisa">
                     <label for="codigo">Por código</label>
                     <input type="text" id="input-codigo" />
@@ -67,27 +69,29 @@
                     <img src="./img/arrow.png" class="preview-arrow-right">
                 </div>
 
-                <label for="quantidade">Quantidade</label>
-                <input type="number" id="input-quant" />
-                <label for="lista-tipo">Tipo</label>
-                <select name="tipo" id="select-tipo">
-                    <option value="unidade">unidade</option>
-                    <option value="kg">kg</option>
-                    <option value="saco">Saco</option>
-                </select>
+                <div class="adicionar-carrinho">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="input-quant" />
+                    <label for="lista-tipo">Tipo</label>
+                    <select name="tipo" id="select-tipo">
+                        <option value="unidade">unidade</option>
+                        <option value="kg">kg</option>
+                        <option value="saco">Saco</option>
+                    </select>
 
-                <button class="btn btn-adicionar-item">Adicionar ao carrinho</button>
+                    <button class="btn btn-adicionar-item">Adicionar ao carrinho</button>
+                </div>
             </section>
             <section class="carrinho sessao">
-                <table class="demo">
-                    <caption>Carrinho</caption>
+                <h2 class="titulo">Carrinho</h2>
+                <table class="tabela-carrinho">
                     <thead>
                         <tr>
-                            <th>Código</th>
+                            <th class="th-codigo">Código</th>
                             <th class="th-nome">Nome</th>
-                            <th>Quant.</th>
-                            <th>Tipo</th>
-                            <th>Valor Total Item</th>
+                            <th class="th-quant">Quant.</th>
+                            <th class="th-tipo">Tipo</th>
+                            <th class="th-valor">Valor Total Item</th>
                         </tr>
                     </thead>
                     <tbody class="tabela-carrinho-linhas">
@@ -99,14 +103,15 @@
                         </tr> -->
                     </tbody>
                 </table>
+
             </section>
-            <input type="submit" class="btn-fechar-carrinho" value="Fechar Carrinho" />
+            <input type="submit" class="btn btn-fechar-carrinho" value="Fechar Carrinho" />
         </div>
         <div class="painel-estoque ">
             <section class="estoque-racao sessao">
                 <!-- Rações -->
+                <h2 class="titulo">Rações</h2>
                 <table class="tabela-estoque">
-                    <caption>Rações</caption>
                     <thead>
                         <tr>
                             <th class="th-codigo">Código</th>
@@ -131,8 +136,8 @@
 
             <section class="estoque-brinquedos sessao">
                 <!-- Brinquedos -->
+                <h2 class="titulo">Brinquedos</h2>
                 <table class="tabela-estoque">
-                    <caption>Brinquedos</caption>
                     <thead>
                         <tr>
                             <th class="th-codigo">Código</th>
@@ -154,8 +159,8 @@
 
             <section class="estoque-acessorios sessao">
                 <!-- Acessórios -->
+                <h2 class="titulo">Acessórios</h2>
                 <table class="tabela-estoque">
-                    <caption>Acessórios</caption>
                     <thead>
                         <tr>
                             <th class="th-codigo">Código</th>
@@ -177,6 +182,8 @@
         </div>
         <div class="painel-cadastro">
             <section class="cadastro sessao">
+                <h2 class="titulo">Cadastro itens</h2>
+
                 <div class="selecao-categoria">
                     <label for="select-categoria-cadastro">Selecione a categoria do item:</label>
                     <select name="tipo" id="select-categoria-cadastro">
@@ -204,7 +211,8 @@
                             <input type="text" id="cadastro-racao-sabor" class="cadastro-input" placeholder="Carne" />
 
                             <label for="cadastro-racao-sabor">Peso saco</label>
-                            <input type="text" id="cadastro-racao-peso-saco" class="cadastro-input" placeholder="Carne" />
+                            <input type="text" id="cadastro-racao-peso-saco" class="cadastro-input"
+                                placeholder="Carne" />
                         </div>
                         <div class="racao-quantidade-e-valores">
                             <label for="cadastro-racao-quantidade">Quantidade</label>
@@ -224,10 +232,10 @@
                     <div class="cadastro-brinquedo">
                         <div class="dados">
                             <label for="cadastro-brinquedo-nome">Nome do brinquedo</label>
-                            <input type="text" id="cadastro-brinquedo-nome" class="cadastro-input"/>
+                            <input type="text" id="cadastro-brinquedo-nome" class="cadastro-input" />
 
                             <label for="cadastro-brinquedo-especie">Especie</label>
-                            <input type="text" id="cadastro-brinquedo-especie" class="cadastro-input"/>
+                            <input type="text" id="cadastro-brinquedo-especie" class="cadastro-input" />
                         </div>
                         <div class="quantidade-e-valores">
                             <label for="cadastro-brinquedo-quantidade">Quantidade</label>
@@ -244,10 +252,10 @@
                     <div class="cadastro-acessorio">
                         <div class="dados">
                             <label for="cadastro-acessorio-nome">Nome do Acessório</label>
-                            <input type="text" id="cadastro-acessorio-nome" class="cadastro-input"/>
+                            <input type="text" id="cadastro-acessorio-nome" class="cadastro-input" />
 
                             <label for="cadastro-acessorio-especie">Especie</label>
-                            <input type="text" id="cadastro-acessorio-especie" class="cadastro-input"/>
+                            <input type="text" id="cadastro-acessorio-especie" class="cadastro-input" />
                         </div>
                         <div class="quantidade-e-valores">
                             <label for="cadastro-acessorio-quantidade">Quantidade</label>
@@ -260,7 +268,8 @@
                     <button class="btn btn-cadastro">Adicionar item ao banco de dados</button>
                 </section>
 
-            </section> <!--sessao cadastro-->
+            </section>
+            <!--sessao cadastro-->
 
         </div>
         <!--Final painel-cadastro -->

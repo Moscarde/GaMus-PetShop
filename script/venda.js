@@ -1,3 +1,8 @@
+//Dados cliente
+const inputClienteNome = document.getElementById("cliente-nome")
+const inputClienteEndereco = document.getElementById("cliente-endereco")
+const inputClienteTelefone = document.getElementById("cliente-telefone")
+
 //Pesquisar item
 const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
@@ -52,7 +57,7 @@ const checarLista = function () {
 //tratamento de erro caso url == undefined -- chamada pelo mostraItemPreview
 const verificaImgPreview = item => {
     if (item.url != undefined) {
-        const url = '<img src="' + item.url + '">'
+        const url = `<img src="${item.url}" alt="Imagem do item ${item.nome}">`
         return url
     }
     else {
@@ -156,7 +161,7 @@ const adicionaItemCarrinho = (item, quant, tipo) => {
 }
 
 
-//          === === === ONCLICK === === ===
+//=== === === ONCLICK === === ===
 
 //verifica inputs e chama procuraItemPor Nome || Codigo
 btnProcurarItem.onclick = function () {
@@ -228,8 +233,52 @@ btnAdicionarItem.onclick = function () {
     mostraItemPreview(itemAtual)
 }
 
+adicionaItemCarrinho(listaItens[2], 5, "kg")
+adicionaItemCarrinho(listaItens[4], 2, "saco")
+adicionaItemCarrinho(listaItens[6], 2, "kg")
+
+
+
+//impressao
+function imprimir() {
+    var mywindow = window.open('', 'PRINT', 'height=920,width=1180');
+    let html = `
+    <html>
+        <head>
+            <link rel="stylesheet" href="./css/reset.css" />
+            <link rel="stylesheet" href="./css/print.css" />
+            <title>${document.title}  </title>
+        </head>
+        <body>
+            <main>
+                <h2 class="titulo">Dados Cliente</h2>
+                <b>Nome: </b>${inputClienteNome.value}
+                </br>
+                <b>Endereço: </b>${inputClienteEndereco.value}
+                </br>
+                <b>Telefone: </b>${inputClienteTelefone.value}
+                </br>
+                </br>
+
+                ${(document.querySelector(".carrinho").innerHTML)}
+            </main>
+        </body>
+    </html>
+            `
+    mywindow.document.write(html)
+
+    mywindow.document.close(); // necessary for IE >= 10
+    // mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    // mywindow.close();
+
+    return true;
+    
+}
 btnFecharCarrinho.onclick = function () {
     console.log(carrinho);
+    imprimir()
 }
 
 
