@@ -260,12 +260,6 @@ btnAdicionarItem.onclick = function () {
     mostraItemPreview(itemAtual)
 }
 
-adicionaItemCarrinho(listaItens[2], 5, "kg")
-adicionaItemCarrinho(listaItens[4], 2, "saco")
-adicionaItemCarrinho(listaItens[6], 2, "kg")
-
-
-
 //impressao
 function imprimir() {
     var mywindow = window.open('', 'PRINT', 'height=920,width=1180');
@@ -318,3 +312,9 @@ selectCliente.onchange = function () {
     inputClienteEndereco.value = listaClientes[index].endereco
     inputClienteTelefone.value = listaClientes[index].telefone
 }
+
+//testes
+// adicionaItemCarrinho(listaItens[2], 5, "kg")
+// adicionaItemCarrinho(listaItens[4], 2, "saco")
+// adicionaItemCarrinho(listaItens[6], 2, "kg")
+
