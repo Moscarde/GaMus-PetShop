@@ -3,8 +3,6 @@ const inputCodigo = document.getElementById("input-codigo") /**.value */
 const inputNome = document.getElementById("input-nome") /**.value */
 const btnProcurarItem = document.querySelector(".btn-procurar-item")
 const selectCategoria = document.getElementById("select-categoria")
-
-
 const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
@@ -17,10 +15,10 @@ const arrowRight = document.querySelector(".preview-arrow-right")
 const inputQuant = document.getElementById("input-quant")
 const selectTipo = document.getElementById("select-tipo")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
+
+//Tabela
 const tabelaCarrinho = document.querySelector(".tabela-carrinho-linhas")
-const tabelaEstoqueRacao = document.querySelector(".tabela-racao-linhas")
-const tabelaEstoqueBrinquedo = document.querySelector(".tabela-brinquedo-linhas")
-const tabelaEstoqueAcessorio = document.querySelector(".tabela-acessorio-linhas")
+
 
 const btnFecharCarrinho = document.querySelector(".btn-fechar-carrinho")
 
@@ -30,12 +28,10 @@ let carrinho = []
 let listaFiltrada = []
 
 
-
-
-//          === === === FUNCOES === === ===
-
+//=== === === FUNCOES === === ===
 //          === === === Calculos e redundancias === === ===
 
+//limpa o campo oposto
 inputNome.onfocus = function () {
     inputCodigo.value = ""
 }
@@ -44,6 +40,7 @@ inputCodigo.onfocus = function () {
     inputNome.value = ""
 }
 
+//filtra os itens pelo valor do select ao trocar itens -- chamada pelo arrowLeft e arrowRigth onclick
 const checarLista = function () {
     if (checkCategoria.checked) {
         return listaFiltrada
@@ -51,18 +48,21 @@ const checarLista = function () {
         return listaItens
     }
 }
+
+//tratamento de erro caso url == undefined -- chamada pelo mostraItemPreview
 const verificaImgPreview = item => {
     if (item.url != undefined) {
         const url = '<img src="' + item.url + '">'
         return url
     }
     else {
-        const url = '<img src="' + './img/erro-img-nao-encontrada.jpg' + '">'
+        const url = '<img src="' + './img/itens/erro-img-nao-encontrada.jpg' + '">'
         return url
     }
 }
 
-const geraCodigoCategoria = item => {
+//gera o trecho html de acordo com os parametros do item -- chamada pelo mostraItemPreview
+const geraCodigoPreview = item => {
     let htmlCode = ''
     if (item.constructor.name != 'Racao') {
         htmlCode = `<p><strong>Código:</strong> ${item.codigoItem}</p>
@@ -79,6 +79,8 @@ const geraCodigoCategoria = item => {
     }
     return htmlCode
 }
+
+//troca as opçoes do select de tipo do item  -- chamada pelo mostraItemPreview
 const mudaSelectTipo = item => {
     let selectHTML = ''
     if (item.constructor.name == "Racao") {
@@ -91,7 +93,29 @@ const mudaSelectTipo = item => {
     selectTipo.innerHTML = selectHTML
 }
 
+//tratamento de acordo com o item e coloca dados gerados no html -- chamada pelo arrowLeft ArrowRigth e pesquisas nome e codigo
+const mostraItemPreview = item => {
+    let previewHTML = ''
+
+    if (item != undefined) {
+        previewHTML = geraCodigoPreview(item)
+        previewUrlItem = verificaImgPreview(item)
+    } else {
+        previewHTML = `<p><strong>Código:</strong> Item não encontrado</p>
+        <p><strong>Nome:</strong> Item não encontrado</p>
+        <p><strong>Valor:</strong> Item não encontrado</p>
+        <p><strong>Estoque:</strong> Item não encontrado</p>`
+        previewUrlItem = '<img src="' + './itens/img/erro-item-nao-encontrado.jpg' + '">'
+    }
+
+    infoPreview.innerHTML = previewHTML;
+    imgPreview.innerHTML = previewUrlItem;
+    mudaSelectTipo(item)
+}
+
+//=== === === FUNCOES === === ===
 //          === === === Main === === ===
+
 const procuraItemPorNome = nome => {
     console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
@@ -103,25 +127,7 @@ const procuraItemPorCodigo = codigo => {
     mostraItemPreview(itemAtual)
 }
 
-const mostraItemPreview = item => {
-    let previewHTML = ''
-
-    if (item != undefined) {
-        previewHTML = geraCodigoCategoria(item)
-        previewUrlItem = verificaImgPreview(item)
-    } else {
-        previewHTML = `<p><strong>Código:</strong> Item não encontrado</p>
-        <p><strong>Nome:</strong> Item não encontrado</p>
-        <p><strong>Valor:</strong> Item não encontrado</p>
-        <p><strong>Estoque:</strong> Item não encontrado</p>`
-        previewUrlItem = '<img src="' + './img/erro-item-nao-encontrado.jpg' + '">'
-    }
-
-    infoPreview.innerHTML = previewHTML;
-    imgPreview.innerHTML = previewUrlItem;
-    mudaSelectTipo(item)
-}
-
+//recebe um item e adiona na tabela do carrinho -- chamado pelo adicionaItemCarrinho
 const adicionaLinhaTabela = (novoItem, tipo) => {
     let estrutura = `
     <tr>
@@ -135,7 +141,8 @@ const adicionaLinhaTabela = (novoItem, tipo) => {
     tabelaCarrinho.innerHTML += estrutura
 }
 
-const adicionaCarrinho = (item, quant, tipo) => {
+//checa estoque, adiciona o item no array carrinho e chama adicionaLinhaTabela
+const adicionaItemCarrinho = (item, quant, tipo) => {
     let itemCarrinho = structuredClone(item)
     itemCarrinho.calculaVenda = item.calculaVenda
 
@@ -148,56 +155,10 @@ const adicionaCarrinho = (item, quant, tipo) => {
     adicionaLinhaTabela(itemCarrinho, tipo)
 }
 
-const atualizaEstoque = () => {
-    tabelaEstoqueRacao.innerHTML = ""
-    tabelaEstoqueBrinquedo.innerHTML = ""
-    tabelaEstoqueAcessorio.innerHTML = ""
-
-    listaItens.forEach(item => {
-        if (item.constructor.name == "Racao") {
-            // <!--codigo especie nome pesosaco estoquesaco valorsaco valorkg -->
-            let estrutura = ` 
-                <tr>
-                    <td>${item.codigoItem}</td>
-                    <td>${item.especie}</td>
-                    <td>${item.nome}</td>
-                    <td>${item.pesoSaco} kg</td>
-                    <td>${item.estoqueSaco}</td>
-                    <td>${item.valorSaco}</td>
-                    <td>${item.valorKg}</td>
-                </tr>
-                `
-            tabelaEstoqueRacao.innerHTML += estrutura
-        }
-        else if (item.constructor.name == "Brinquedo") {
-            let estrutura = ` 
-                <tr>
-                    <td>${item.codigoItem}</td>
-                    <td>${item.nome}</td>
-                    <td>${item.estoque}</td>
-                    <td>${item.valor}</td>
-                </tr>
-                `
-            tabelaEstoqueBrinquedo.innerHTML += estrutura
-        }
-        else if (item.constructor.name == "Acessorio") {
-            let estrutura = ` 
-                <tr>
-                    <td>${item.codigoItem}</td>
-                    <td>${item.nome}</td>
-                    <td>${item.estoque}</td>
-                    <td>${item.valor}</td>
-                </tr>
-                `
-            tabelaEstoqueAcessorio.innerHTML += estrutura
-        }
-    }
-    )
-    
-}
-
 
 //          === === === ONCLICK === === ===
+
+//verifica inputs e chama procuraItemPor Nome || Codigo
 btnProcurarItem.onclick = function () {
     if (inputCodigo.value == "") {
         //procurando por nome
@@ -210,14 +171,20 @@ btnProcurarItem.onclick = function () {
         procuraItemPorCodigo(codigo)
     }
 }
+
+//procura item quando alterar o campo
 inputCodigo.onkeyup = function () {
     const codigo = inputCodigo.value
     procuraItemPorCodigo(codigo)
 }
+
+//procura item quando alterar o campo
 inputNome.onkeyup = function () {
     const nome = inputNome.value
     procuraItemPorNome(nome)
 }
+
+//filtra categoria
 checkCategoria.onchange = function () {
     if (checkCategoria.checked) {
         mostraItemPreview(listaFiltrada[0])
@@ -225,6 +192,8 @@ checkCategoria.onchange = function () {
         mostraItemPreview(listaItens[0])
     }
 }
+
+//filtra categoria
 selectCategoria.onchange = function () {
     listaFiltrada = listaItens.filter(obj => obj.categoria === selectCategoria.value)
     if (checkCategoria.checked) {
@@ -232,7 +201,7 @@ selectCategoria.onchange = function () {
     }
 }
 
-//  Item anterior e Proximo item
+//item anterior e Proximo item
 arrowRight.onclick = function () {
     let listaAtual = checarLista()
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) + 1]
@@ -241,7 +210,7 @@ arrowRight.onclick = function () {
     }
     mostraItemPreview(itemAtual)
 }
-
+//item anterior e Proximo item
 arrowLeft.onclick = function () {
     let listaAtual = checarLista()
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) - 1]
@@ -251,10 +220,11 @@ arrowLeft.onclick = function () {
     mostraItemPreview(itemAtual)
 }
 
+//coleta dados dos inputs e adiciona ao carrinho e atualiza preview
 btnAdicionarItem.onclick = function () {
     let quantidade = inputQuant.value
     let tipo = selectTipo.value
-    adicionaCarrinho(itemAtual, quantidade, tipo)
+    adicionaItemCarrinho(itemAtual, quantidade, tipo)
     mostraItemPreview(itemAtual)
 }
 
@@ -262,15 +232,5 @@ btnFecharCarrinho.onclick = function () {
     console.log(carrinho);
 }
 
-    //Cadastro
 
 
-
-window.onload = function () {
-    const listaCategorias = ["Acessórios", "Brinquedos", "Rações"]
-    const listaCategoriasDB = ["Acessorio", "Brinquedo", "Racao"]
-    listaCategorias.forEach((item, index) => {
-        selectCategoria.innerHTML += `<option value="${listaCategoriasDB[index]}">${item}</option>`
-    });
-
-}

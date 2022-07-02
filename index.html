@@ -21,7 +21,7 @@
             <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
         </ul>
 
-        <div class="painel-vendas">
+        <div class="painel-vendas  visible">
             <section class="dados-cliente sessao">
                 <label for="nomecliente">Nome</label>
                 <input type="text" id="nomecliente" class="input-padrao" placeholder="Nome Cliente" />
@@ -45,8 +45,10 @@
                     <input type="checkbox" id="check-categoria" name="check-categoria">
                     <label for="check-categoria">Filtrar categoria</label>
                     <select name="tipo" id="select-categoria">
-                        <!-- Puxado do banco de dados -->
-                        <option value="" disabled selected>Selecionar categoria</option>
+                        <option value="" disabled="" selected="">Selecionar categoria</option>
+                        <option value="Acessorio">Acessórios</option>
+                        <option value="Brinquedo">Brinquedos</option>
+                        <option value="Racao">Rações</option>
                     </select>
                 </div>
 
@@ -173,7 +175,7 @@
                 </table>
             </section>
         </div>
-        <div class="painel-cadastro  visible">
+        <div class="painel-cadastro">
             <section class="cadastro sessao">
                 <div class="selecao-categoria">
                     <label for="select-categoria-cadastro">Selecione a categoria do item:</label>
@@ -202,7 +204,7 @@
                             <input type="text" id="cadastro-racao-sabor" class="cadastro-input" placeholder="Carne" />
 
                             <label for="cadastro-racao-sabor">Peso saco</label>
-                            <input type="text" id="cadastro-racao-sabor" class="cadastro-input" placeholder="Carne" />
+                            <input type="text" id="cadastro-racao-peso-saco" class="cadastro-input" placeholder="Carne" />
                         </div>
                         <div class="racao-quantidade-e-valores">
                             <label for="cadastro-racao-quantidade">Quantidade</label>
@@ -263,9 +265,10 @@
         </div>
         <!--Final painel-cadastro -->
     </main>
-    <script src="./script/index.js"></script>
-    <script src="./script/main.js"></script>
-    <script src="./script/interacao.js"></script>
+    <script src="./script/banco-de-dados.js"></script>
+    <script src="./script/navegacao.js"></script>
+    <script src="./script/venda.js"></script>
+    <script src="./script/estoque.js"></script>
     <script src="./script/cadastro.js"></script>
 </body>
 
