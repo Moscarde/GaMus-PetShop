@@ -131,3 +131,19 @@ console.log(listaItens);
 
 // console.log(listaItens[0].nome.includes('Foster'))
 //          ---Interação---
+
+let codigoCliente = 0;
+class Cliente {
+    constructor(nome, endereco, telefone) {
+        this.codigo = ++codigoCliente
+        this.nome = nome;
+        this.endereco = endereco; //incrementação do código a cada novo Item
+        this.telefone = telefone
+    }
+}
+
+const Jose = new Cliente("Jose", "Av Principal n:1342", "21 99999 9999")
+const Marcia = new Cliente("Marcia", "Estrada Campinho n:25", "21 99999 9999")
+const Laura = new Cliente("Laura", "Estrada Copacabana n:2000 ap:201", "21 99999 9999")
+
+let listaClientes = [Jose, Marcia, Laura]

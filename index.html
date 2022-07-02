@@ -19,19 +19,34 @@
             <li><a href="#" class="nav-vendas nav-ativo">Vendas</a> </li>
             <li><a href="#" class="nav-estoque">Tabela Estoque</a></li>
             <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
+            <li><a href="#" class="nav-cadastro-cliente">Cadastrar novo cliente</a></li>
         </ul>
 
         <div class="painel-vendas  visible">
             <section class="dados-cliente sessao">
                 <h2 class="titulo">Dados Cliente</h2>
-                <label for="cliente-nome">Nome</label>
-                <input type="text" id="cliente-nome" class="input-padrao" placeholder="Nome Cliente" value="Teste" />
+                <div class="cliente-campo">
+                    <div class="cliente-campo-input">
+                        <label for="cliente-nome">Nome</label>
+                        <input type="text" id="cliente-nome" class="input-padrao" placeholder="Nome Cliente"
+                            value="Teste" />
 
-                <label for="cliente-endereco">Endereço</label>
-                <input type="text" id="cliente-endereco" class="input-padrao" placeholder="Rua Um Numero: 2" value="Rue xxxx"/>
+                        <label for="cliente-endereco">Endereço</label>
+                        <input type="text" id="cliente-endereco" class="input-padrao" placeholder="Rua Um Numero: 2"
+                            value="Rue xxxx" />
 
-                <label for="cliente-telefone">Telefone</label>
-                <input type="tel" id="cliente-telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx" value="21 99999 99999"/>
+                        <label for="cliente-telefone">Telefone</label>
+                        <input type="tel" id="cliente-telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx"
+                            value="21 99999 99999" />
+                    </div>
+                    <div class="cliente-campo-select">
+                        <label for="select-cliente">Selecionar um cliente já cadastrado</label>
+                        <select name="tipo" id="select-cliente">
+                            <option value="" disabled="" selected="">Clientes cadastrados...</option>
+
+                        </select>
+                    </div>
+                </div>
             </section>
             <section class="adicionar-item sessao">
                 <h2 class="titulo">Pesquisa Itens</h2>
@@ -230,8 +245,6 @@
                             <label for="cadastro-racao-valor-saco">Valor saco</label>
                             <input type="text" id="cadastro-racao-valor-saco" class="cadastro-input" />
 
-                            <label for="cadastro-racao-valor-kg">Valor kg</label>
-                            <input type="text" id="cadastro-racao-valor-kg" class="cadastro-input" />
                         </div>
                     </div>
                     <button class="btn btn-cadastro">Adicionar item ao banco de dados</button>
@@ -281,13 +294,36 @@
             <!--sessao cadastro-->
 
         </div>
+        <div class="painel-cadastro-cliente">
+            <section class="cadastro sessao">
+                <h2 class="titulo">Cadastro clientes</h2>
+                <div class="cadastro-cliente-campo">
+                    <label for="cadastro-cliente-nome">Nome</label>
+                    <input type="text" id="cadastro-cliente-nome" class="input-padrao" placeholder="Nome Cliente"
+                        value="" />
+
+                    <label for="cadastro-cliente-endereco">Endereço</label>
+                    <input type="text" id="cadastro-cliente-endereco" class="input-padrao" placeholder="Rua Um Numero: 2"
+                        value="" />
+
+                    <label for="cadastro-cliente-telefone">Telefone</label>
+                    <input type="tel" id="cadastro-cliente-telefone" class="input-padrao" placeholder="(xx) xxxxx-xxxx"
+                        value="" />
+                </div>
+                <button class="btn btn-cadastro-cliente">Adicionar cliente ao banco de dados</button>
+                
+            </section>
+            <!--sessao cadastro-->
+
+        </div>
         <!--Final painel-cadastro -->
     </main>
     <script src="./script/banco-de-dados.js"></script>
     <script src="./script/navegacao.js"></script>
     <script src="./script/venda.js"></script>
     <script src="./script/estoque.js"></script>
-    <script src="./script/cadastro.js"></script>
+    <script src="./script/cadastro-item.js"></script>
+    <script src="./script/cadastro-cliente.js"></script>
 </body>
 
 </html>

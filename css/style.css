@@ -46,7 +46,8 @@ main {
 
 .nav-vendas,
 .nav-estoque,
-.nav-cadastro {
+.nav-cadastro,
+.nav-cadastro-cliente {
     display: block;
     background-color: var(--cor2);
     color: white;
@@ -66,7 +67,8 @@ main {
 
 .painel-vendas,
 .painel-estoque,
-.painel-cadastro {
+.painel-cadastro,
+.painel-cadastro-cliente {
     display: none;
     padding: 2.3em;
 }
@@ -89,7 +91,7 @@ main {
 .input-padrao {
     margin-bottom: 1em;
     padding: 0.5em;
-    width: 400px;
+    width: 300px;
 }
 .titulo{
     text-align: center;
@@ -99,9 +101,18 @@ main {
 
 /* Vendas */
 /* Cliente */
+.cliente-campo{
+    display: flex;
+    justify-content: space-around
+
+}
 .dados-cliente label {
     display: block;
     margin-bottom: 0.5em;
+}
+#select-cliente{
+    padding: 0.5em;
+    width: 250px;
 }
 
 /* Vendas */
@@ -139,7 +150,8 @@ main {
 .cadastro-input:focus,
 #input-codigo:focus,
 #input-nome:focus,
-#select-categoria:focus,
+#select-categoria:focus
+#select-cliente:focus,
 #input-quant:focus,
 #select-tipo:focus,
 #select-categoria-cadastro:focus {
@@ -350,6 +362,7 @@ main {
     display: block;
     margin: 0 auto;
 }
+
 
 
 .visible {

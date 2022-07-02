@@ -37,16 +37,17 @@ const cadastrarNovoItem = (categoria) => {
         const pesoSaco = cadastroRacaoPesoSaco.value
         const quantidade = cadastroRacaoQuantidade.value
         const valorSaco = cadastroRacaoValorSaco.value
-        const valorKg = cadastroRacaoValorKg.value
         //nome, especie, sabor, pesoSaco, valorkg, valor saco, estoque saco, url img
-        const novoItem = new Racao(nome, especie, sabor, pesoSaco, valorKg, valorSaco, quantidade, "./img/itens/img-item-cadastrado.jpg")
+        const novoItem = new Racao(nome, especie, sabor, pesoSaco, Number(valorSaco), quantidade, "./img/itens/img-item-cadastrado.jpg")
+        listaItens.push(novoItem)
+        alert(`Item "${nome}" foi cadastrado com sucesso!`)
     }
     else if (categoria == "Brinquedo") {
         const nome = cadastroBrinquedoNome.value
         const especie = cadastroBrinquedoEspecie.value
         const quantidade = cadastroBrinquedoQuantidade.value
         const valor = cadastroBrinquedoValor.value
-        const novoItem = new Brinquedo(nome, especie, valor, quantidade, "./img/itens/img-item-cadastrado.jpg")
+        const novoItem = new Brinquedo(nome, especie, Number(valor), quantidade, "./img/itens/img-item-cadastrado.jpg")
         listaItens.push(novoItem)
         alert(`Item "${nome}" foi cadastrado com sucesso!`)
 
@@ -56,7 +57,7 @@ const cadastrarNovoItem = (categoria) => {
         const especie = cadastroAcessorioEspecie.value
         const quantidade = cadastroAcessorioQuantidade.value
         const valor = cadastroAcessorioValor.value
-        const novoItem = new Acessorio(nome, especie, valor, quantidade, "./img/itens/img-item-cadastrado.jpg")
+        const novoItem = new Acessorio(nome, especie, Number(valor), quantidade, "./img/itens/img-item-cadastrado.jpg")
         listaItens.push(novoItem)
         alert(`Item "${nome}" foi cadastrado com sucesso!`)
     }

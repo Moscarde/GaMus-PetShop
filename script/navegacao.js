@@ -1,13 +1,15 @@
 const navVendas = document.querySelector(".nav-vendas")
 const navEstoque = document.querySelector(".nav-estoque")
 const navCadastro = document.querySelector(".nav-cadastro")
+const navCadastroCliente = document.querySelector(".nav-cadastro-cliente")
 const painelVendas = document.querySelector(".painel-vendas")
 const painelEstoque = document.querySelector(".painel-estoque")
 const painelCadastro = document.querySelector(".painel-cadastro")
+const painelCadastroCliente = document.querySelector(".painel-cadastro-cliente")
 
 
-painelList = [painelVendas, painelEstoque, painelCadastro]
-navList = [navVendas, navEstoque, navCadastro]
+painelList = [painelVendas, painelEstoque, painelCadastro, painelCadastroCliente]
+navList = [navVendas, navEstoque, navCadastro, navCadastroCliente]
 
 //troca o painel e o visual da aba
 function switchPainel(painel, nav) {
@@ -27,6 +29,7 @@ function switchPainel(painel, nav) {
 
 navVendas.onclick = function () {
     switchPainel(painelVendas, this)
+    atualizaClientes()
 }
 navEstoque.onclick = function () {
     switchPainel(painelEstoque, this)
@@ -34,6 +37,9 @@ navEstoque.onclick = function () {
 }
 navCadastro.onclick = function () {
     switchPainel(painelCadastro, this)
+}
+navCadastroCliente.onclick = function () {
+    switchPainel(painelCadastroCliente, this)
 }
 
 

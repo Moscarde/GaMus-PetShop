@@ -2,6 +2,7 @@
 const inputClienteNome = document.getElementById("cliente-nome")
 const inputClienteEndereco = document.getElementById("cliente-endereco")
 const inputClienteTelefone = document.getElementById("cliente-telefone")
+const selectCliente = document.getElementById("select-cliente")
 
 //Pesquisar item
 const inputCodigo = document.getElementById("input-codigo") /**.value */
@@ -36,6 +37,14 @@ let listaFiltrada = []
 
 //=== === === FUNCOES === === ===
 //          === === === Calculos e redundancias === === ===
+
+//atualiza o campo de clientes cadastrados --chamado no carregamento e na mudanca de aba
+const atualizaClientes = () => {
+    selectCliente.innerHTML = '<option value="" disabled="" selected="">Clientes cadastrados...</option>'
+    listaClientes.forEach((cliente, index) =>{
+        selectCliente.innerHTML += `<option value="${index}">${cliente.codigo} - ${cliente.nome}</option>`
+    })
+}
 
 //limpa o campo oposto
 inputNome.onfocus = function () {
@@ -301,3 +310,11 @@ btnFecharCarrinho.onclick = function () {
 
 
 
+window.onload = atualizaClientes() 
+
+selectCliente.onchange = function () {
+    let index = selectCliente.value
+    inputClienteNome.value = listaClientes[index].nome
+    inputClienteEndereco.value = listaClientes[index].endereco
+    inputClienteTelefone.value = listaClientes[index].telefone
+}
