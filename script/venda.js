@@ -20,6 +20,7 @@ const arrowRight = document.querySelector(".preview-arrow-right")
 const inputQuant = document.getElementById("input-quant")
 const selectTipo = document.getElementById("select-tipo")
 const btnAdicionarItem = document.querySelector(".btn-adicionar-item")
+const valorTotalSomado = document.querySelector(".th-valor-somado")
 
 //Tabela
 const tabelaCarrinho = document.querySelector(".tabela-carrinho-linhas")
@@ -140,10 +141,19 @@ const adicionaLinhaTabela = (novoItem, tipo) => {
         <td>${novoItem.nome}</td>
         <td>${novoItem.quantidadeVenda}</td>
         <td>${tipo}</td>
-        <td class="valor-item">${novoItem.valorVenda}</td>
+        <td class="valor-item">${novoItem.valorVenda.toFixed(2)}</td>
     </tr>
     `
     tabelaCarrinho.innerHTML += estrutura
+    
+    //somando valores
+    valorTotalSomado.innerHTML = ""
+    const valorItemLista = document.querySelectorAll(".valor-item")
+    let valorTotalCarrinho = 0
+    valorItemLista.forEach(valor => {
+        valorTotalCarrinho += Number(valor.innerHTML)
+    });
+    valorTotalSomado.innerHTML = valorTotalCarrinho.toFixed(2)
 }
 
 //checa estoque, adiciona o item no array carrinho e chama adicionaLinhaTabela
@@ -152,7 +162,7 @@ const adicionaItemCarrinho = (item, quant, tipo) => {
     itemCarrinho.calculaVenda = item.calculaVenda
 
     if (!item.checaEstoque(quant, tipo)) {
-        console.log('Estoque insuficiente')
+        alert('Estoque insuficiente')
         return
     }
     itemCarrinho.calculaVenda(quant, tipo)
@@ -229,6 +239,14 @@ arrowLeft.onclick = function () {
 btnAdicionarItem.onclick = function () {
     let quantidade = inputQuant.value
     let tipo = selectTipo.value
+    if (itemAtual === '') {
+        alert('Item invalido')
+        return
+    }
+    if (quantidade <= 0) {
+        alert('Quantidade invalida')
+        return
+    }
     adicionaItemCarrinho(itemAtual, quantidade, tipo)
     mostraItemPreview(itemAtual)
 }

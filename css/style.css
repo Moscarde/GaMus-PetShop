@@ -265,10 +265,21 @@ main {
     font-size: 1em;
 
 }
+.carrinho-total{
+    margin-top: 0.5em;
+}
+.carrinho-total th{
+    background: none;
+    padding: 0.5em;
+    font-weight: bold;
+}
 
+.th-valor-somado {
+    width: 9%;
+}
 
 /* estoque */
-.th-codigo, .th-estoque-saco, .th-valor-saco, .th-valor-kg, .th-estoque, .th-valor  {
+.th-codigo, .th-estoque-saco, .th-valor-saco, .th-valor-kg, .th-estoque, .th-valor {
     width: 9%;
 }
 

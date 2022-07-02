@@ -37,3 +37,16 @@ b{
 .th-codigo, .th-quant, .th-tipo, .th-valor{
     width: 9%;
 }
+
+.carrinho-total{
+    margin-top: 0.5em;
+}
+.carrinho-total th{
+    background: none;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.th-valor-somado {
+    width: 9%;
+}

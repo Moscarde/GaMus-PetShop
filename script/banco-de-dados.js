@@ -8,13 +8,13 @@ class Item {
 }
 
 class Racao extends Item {
-    constructor(nome, especie, sabor, pesoSaco, valorKg, valorSaco,  estoqueSaco, url) {
+    constructor(nome, especie, sabor, pesoSaco, valorSaco, estoqueSaco, url) {
         super(nome, url)
         this.especie = especie;
         this.sabor = sabor;
         this.pesoSaco = pesoSaco
-        this.valorKg = valorKg;
-        this.valorSaco = valorSaco;
+        this.valorSaco = valorSaco.toFixed(2);
+        this.valorKg = ((this.valorSaco / this.pesoSaco) + (((this.valorSaco / this.pesoSaco) * 30) / 100)).toFixed(2); //calculando o valor do kg do saco + 30 %
         this.estoqueKg = estoqueSaco * pesoSaco;
         this.estoqueSaco = estoqueSaco;
         this.categoria = this.constructor.name
@@ -54,7 +54,7 @@ class Brinquedo extends Item {
     constructor(nome, especie, valor, estoque, url) {
         super(nome, url)
         this.especie = especie;
-        this.valor = valor;
+        this.valor = valor.toFixed(2);
         this.estoque = estoque;
         this.categoria = this.constructor.name
     }
@@ -75,7 +75,7 @@ class Acessorio extends Item {
     constructor(nome, especie, valor, estoque, url) {
         super(nome, url)
         this.especie = especie;
-        this.valor = valor;
+        this.valor = valor.toFixed(2);
         this.estoque = estoque;
         this.categoria = this.constructor.name
     }
@@ -97,17 +97,17 @@ class Acessorio extends Item {
 //          ---Objetos---
 //nome, especie, sabor, pesoSaco, valorkg, valor saco, estoque saco, url img
 //racao cahorros 
-const RCNutrilusProAdultos = new Racao("Ração Nutrilus Pro - Adultos - 15kg", "Cachorros", "Frango e Carne", 15, 8, 125, 15, "./img/itens/cachorro-nutrilus-pro-adultos.jpg")
-const RCMagnusAdultos = new Racao("Ração Magnus - Adultos - 25kg", "Cachorros", "Carne", 25, 8, 200, 10, "./img/itens/cachorro-magnus-adultos.jpg")
-const RCGranPlusAdultos = new Racao("Ração GranPlus - Adultos - 20kg", "Cachorros", "Frango", 20, 10, 200, 10, "./img/itens/cachorro-granplus-adultos.jpg")
-const RCGranPlusFilhotes = new Racao("Ração GranPlus - Filhotes - 20kg", "Cachorros", "Carne e Arroz", 20, 10, 213, 10, "./img/itens/cachorro-granplus-filhotes.jpg")
-const RCSpecialDogAdultos = new Racao("Ração Special Dog - Adultos - 20kg", "Cachorros", "Carne", 20, 10, 164, 10, "./img/itens/cachorro-special-dog-adultos.jpg")
+const RCNutrilusProAdultos = new Racao("Ração Nutrilus Pro - Adultos - 15kg", "Cachorros", "Frango e Carne", 15, 125.50, 15, "./img/itens/cachorro-nutrilus-pro-adultos.jpg")
+const RCMagnusAdultos = new Racao("Ração Magnus - Adultos - 25kg", "Cachorros", "Carne", 25, 200, 10, "./img/itens/cachorro-magnus-adultos.jpg")
+const RCGranPlusAdultos = new Racao("Ração GranPlus - Adultos - 20kg", "Cachorros", "Frango", 20, 203, 10, "./img/itens/cachorro-granplus-adultos.jpg")
+const RCGranPlusFilhotes = new Racao("Ração GranPlus - Filhotes - 20kg", "Cachorros", "Carne e Arroz", 20, 213, 10, "./img/itens/cachorro-granplus-filhotes.jpg")
+const RCSpecialDogAdultos = new Racao("Ração Special Dog - Adultos - 20kg", "Cachorros", "Carne", 20, 164, 10, "./img/itens/cachorro-special-dog-adultos.jpg")
 //racao gatos
-const RGNutrilusProAdultosCastrados = new Racao("Ração Nutrilus Pro - Adultos Castrados - 10kg", "Gatos", "Salmão", 10, 16, 138, 20, "./img/itens/gato-nutrilus-pro-adultos-castrados.jpg")
-const RGNutrilusProAdultos = new Racao("Ração Nutrilus Pro - Adultos - 10kg", "Gatos", "Carne", 10, 16, 128, 20, "./img/itens/gato-nutrilus-pro-adultos.jpg")
-const RGPremierPetFilhotes = new Racao("Ração PremierPet Golden - Filhotes - 10kg", "Gatos", "Frango", 10, 16, 142, 20, "./img/itens/gato-premierpet-filhotes.jpg")
-const RGPremierPetAdultosCastrados = new Racao("Ração PremierPet Golden - Adultos Castrados - 10kg", "Gatos", "Carne", 10, 16, 142, 20, "./img/itens/gato-premierpet-adultos-castrados.jpg")
-const RGGranPlusAdultosCastrados = new Racao("Ração GranPlus - Adultos Castrados - 10kg", "Gatos", "Salmão e Arroz", 10, 16, 142, 20, "./img/itens/gato-granplus-adultos-castrados.jpg")
+const RGNutrilusProAdultosCastrados = new Racao("Ração Nutrilus Pro - Adultos Castrados - 10kg", "Gatos", "Salmão", 10, 138, 20, "./img/itens/gato-nutrilus-pro-adultos-castrados.jpg")
+const RGNutrilusProAdultos = new Racao("Ração Nutrilus Pro - Adultos - 10kg", "Gatos", "Carne", 10, 128, 20, "./img/itens/gato-nutrilus-pro-adultos.jpg")
+const RGPremierPetFilhotes = new Racao("Ração PremierPet Golden - Filhotes - 10kg", "Gatos", "Frango", 10, 142, 20, "./img/itens/gato-premierpet-filhotes.jpg")
+const RGPremierPetAdultosCastrados = new Racao("Ração PremierPet Golden - Adultos Castrados - 10kg", "Gatos", "Carne", 10, 160, 20, "./img/itens/gato-premierpet-adultos-castrados.jpg")
+const RGGranPlusAdultosCastrados = new Racao("Ração GranPlus - Adultos Castrados - 10kg", "Gatos", "Salmão e Arroz", 10, 152, 20, "./img/itens/gato-granplus-adultos-castrados.jpg")
 
 //brinquedos
 const BBolinha = new Brinquedo("Bolinha de borracha vermelha", "Cachorros", 5, 20, "./img/itens/brinquedo-bolinha.jpg")
