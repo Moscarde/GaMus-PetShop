@@ -12,8 +12,8 @@ const selectCategoria = document.getElementById("select-categoria")
 const checkCategoria = document.getElementById("check-categoria")
 
 //Preview
-const infoPreview = document.querySelector(".info-preview")
-const imgPreview = document.querySelector(".img-preview")
+const infoPreview = document.querySelector(".preview-info")
+const imgPreview = document.querySelector(".preview-img")
 const arrowLeft = document.querySelector(".preview-arrow-left")
 const arrowRight = document.querySelector(".preview-arrow-right")
 

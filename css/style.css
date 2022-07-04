@@ -40,14 +40,8 @@ main {
     border-radius: 10px 10px 0 0;
 }
 
-.nav li {
+.nav-aba {
     float: left;
-}
-
-.nav-vendas,
-.nav-estoque,
-.nav-cadastro,
-.nav-cadastro-cliente {
     display: block;
     background-color: var(--cor2);
     color: white;
@@ -56,6 +50,7 @@ main {
     text-decoration: none;
     border-radius: 10px 10px 0 0;
     text-shadow: 1px 1px 2px black;
+    border-bottom: 1px solid #d89116;
 }
 
 .nav a:hover {
@@ -63,6 +58,15 @@ main {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     color: black;
     text-shadow: none;
+    border-bottom: 1px solid var(--cor6);
+
+}
+
+.nav-ativo {
+    background-color: var(--cor6);
+    color: black;
+    text-shadow: none;
+    border-bottom: 1px solid var(--cor6);
 }
 
 .painel-vendas,
@@ -73,11 +77,6 @@ main {
     padding: 2.3em;
 }
 
-.nav-ativo {
-    background-color: var(--cor6);
-    color: black;
-    text-shadow: none;
-}
 
 /* paineis */
 .sessao {
@@ -197,27 +196,27 @@ main {
 
 }
 
-.img-preview {
+.preview-img {
     width: 80px;
     height: 100px;
     background: var(--cor2);
     display: inline-block;
 }
 
-.img-preview img {
+.preview-img img {
     width: 80px;
     height: 100px;
 }
 
-.info-preview {
+.preview-info {
     text-align: left;
     margin-left: 0.5em;
 }
 
-.info-preview strong{
+.preview-info strong{
     font-weight: bold;
 }
-.info-preview em{
+.preview-info em{
     font-style: italic;
 }
 
@@ -313,7 +312,12 @@ main {
     border: 1px solid #C0C0C0;
     padding: 0.1em 1em;
     vertical-align: middle;
-
+}
+.tabela-estoque tr{
+    height: 2em;
+}
+.tabela-estoque tr:nth-child(even){
+    background-color: #e3f2fc;
 }
 
 /* Cadastro */
@@ -367,4 +371,65 @@ main {
 
 .visible {
     display: block;
+}
+
+/* .display-info{
+    border: solid 1px red;
+    position: relative;
+} */
+/* .info-nome{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+    text-shadow: 0 0 6px #000;
+} */
+/* .display-class-id-menu{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: red;
+    padding: 30px;
+} */
+@media screen and (max-width: 481px) {
+	main{
+        width: auto;
+    }
+    .cliente-campo{
+        flex-direction: column-reverse;
+    }
+    .cliente-campo-select{
+        margin-bottom: 1em;
+    }
+
+    .pesquisa{
+        flex-direction: column;
+    }
+    .preview-item{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .preview{
+        height: 200px;
+        margin-top: 4em;
+        margin-bottom: 4em;
+    }
+    .adicionar-carrinho{
+        flex-direction: column;
+    }
+    .cadastro-acessorio, .cadastro-brinquedo, .cadastro-racao{
+        flex-direction: column;
+    }
+    .estoque-racao, .estoque-brinquedos, .estoque-acessorios{
+        overflow-x:auto;
+    }
+    .nav{
+        display: flex;
+        padding: 0
+    }
+    .nav li a{
+        height: 32px;
+    }
 }

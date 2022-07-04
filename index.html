@@ -16,10 +16,10 @@
     </header>
     <main>
         <ul class="nav">
-            <li><a href="#" class="nav-vendas nav-ativo">Vendas</a> </li>
-            <li><a href="#" class="nav-estoque">Tabela Estoque</a></li>
-            <li><a href="#" class="nav-cadastro">Cadastrar novo item</a></li>
-            <li><a href="#" class="nav-cadastro-cliente">Cadastrar novo cliente</a></li>
+            <li><a href="#" id="nav-vendas" class="nav-aba nav-ativo">Vendas</a> </li>
+            <li><a href="#" id="nav-estoque" class="nav-aba">Tabela Estoque</a></li>
+            <li><a href="#" id="nav-cadastro" class="nav-aba">Cadastrar novo item</a></li>
+            <li><a href="#" id="nav-cadastro-cliente" class="nav-aba">Cadastrar novo cliente</a></li>
         </ul>
 
         <div class="painel-vendas  visible">
@@ -40,7 +40,7 @@
                             value="" />
                     </div>
                     <div class="cliente-campo-select">
-                        <label for="select-cliente">Selecionar um cliente já cadastrado</label>
+                        <label for="select-cliente">Preencher com um cliente já cadastrado</label>
                         <select name="tipo" id="select-cliente">
                             <option value="" disabled="" selected="">Clientes cadastrados...</option>
 
@@ -72,9 +72,9 @@
                 <div class="preview">
                     <img src="./img/arrow.png" class="preview-arrow-left">
                     <div class="preview-item">
-                        <div class="img-preview">
+                        <div class="preview-img">
                         </div>
-                        <div class="info-preview">
+                        <div class="preview-info">
                             <p><strong>Código:</strong> <em>Código do item</em></p>
                             <p><strong>Nome:</strong> <em>Nome do item</em></p>
                             <p><strong>Valor:</strong> <em>Valor do item</em></p>
@@ -324,6 +324,7 @@
     <script src="./script/estoque.js"></script>
     <script src="./script/cadastro-item.js"></script>
     <script src="./script/cadastro-cliente.js"></script>
+    <script src="./script/div-className-preview.js"></script>
 </body>
 
 </html>
