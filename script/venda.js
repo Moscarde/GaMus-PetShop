@@ -179,7 +179,15 @@ const adicionaItemCarrinho = (item, quant, tipo) => {
 }
 
 
-//=== === === ONCLICK === === ===
+//=== === === ENVENTOS === === ===
+
+//atualiza campos de dados do cliente
+selectCliente.onchange = function () {
+    let index = selectCliente.value
+    inputClienteNome.value = listaClientes[index].nome
+    inputClienteEndereco.value = listaClientes[index].endereco
+    inputClienteTelefone.value = listaClientes[index].telefone
+}
 
 //verifica inputs e chama procuraItemPor Nome || Codigo
 btnProcurarItem.onclick = function () {
@@ -297,7 +305,10 @@ function imprimir() {
     
 }
 btnFecharCarrinho.onclick = function () {
-    console.log(carrinho);
+    if (inputClienteNome.value == "" || inputClienteEndereco.value == "" || inputClienteTelefone == "") {
+        alert('Dados do cliente incompleto!');
+        return
+    }
     imprimir()
 }
 
@@ -305,12 +316,7 @@ btnFecharCarrinho.onclick = function () {
 
 window.onload = atualizaClientes() 
 
-selectCliente.onchange = function () {
-    let index = selectCliente.value
-    inputClienteNome.value = listaClientes[index].nome
-    inputClienteEndereco.value = listaClientes[index].endereco
-    inputClienteTelefone.value = listaClientes[index].telefone
-}
+
 
 //testes
 // adicionaItemCarrinho(listaItens[2], 5, "kg")
