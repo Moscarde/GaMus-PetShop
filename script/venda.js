@@ -130,7 +130,6 @@ const mostraItemPreview = item => {
 
 //=== === === FUNCOES === === ===
 //          === === === Main === === ===
-
 const procuraItemPorNome = nome => {
     console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
