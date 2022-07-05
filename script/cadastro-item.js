@@ -30,7 +30,22 @@ const cadastroRacaoValorKg = document.getElementById("cadastro-racao-valor-kg")
 
 //faz o cadastro de um novo item no banco de dados
 const cadastrarNovoItem = (categoria) => {
+    const verificaInput = campo => {
+        let inputs = document.querySelector(campo).getElementsByTagName("input")
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                alert("Todos os campos precisam ser preenchidos!")
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
     if (categoria == "Racao") {
+        if (verificaInput(".cadastro-racao")) {
+            return
+        }
         const nome = cadastroRacaoNome.value
         const especie = cadastroRacaoEspecie.value
         const sabor = cadastroRacaoSabor.value
@@ -43,6 +58,9 @@ const cadastrarNovoItem = (categoria) => {
         alert(`Item "${nome}" foi cadastrado com sucesso!`)
     }
     else if (categoria == "Brinquedo") {
+        if (verificaInput(".cadastro-brinquedo")) {
+            return
+        }
         const nome = cadastroBrinquedoNome.value
         const especie = cadastroBrinquedoEspecie.value
         const quantidade = cadastroBrinquedoQuantidade.value
@@ -52,7 +70,10 @@ const cadastrarNovoItem = (categoria) => {
         alert(`Item "${nome}" foi cadastrado com sucesso!`)
 
     }
-    else if (categoria == "Acessorio") { //tem especie ****************************
+    else if (categoria == "Acessorio") { 
+        if (verificaInput(".cadastro-acessorio")) {
+            return
+        }
         const nome = cadastroAcessorioNome.value
         const especie = cadastroAcessorioEspecie.value
         const quantidade = cadastroAcessorioQuantidade.value

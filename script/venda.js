@@ -132,7 +132,6 @@ const mostraItemPreview = item => {
 //=== === === FUNCOES === === ===
 //          === === === Main === === ===
 const procuraItemPorNome = nome => {
-    console.log('procurando por nome')
     itemAtual = listaItens.find(item => item.nome.toLowerCase().includes(nome.toLowerCase()))
     mostraItemPreview(itemAtual)
 }
@@ -312,7 +311,7 @@ btnFecharCarrinho.onclick = function () {
         return
     }
     imprimir()
-    teste()
+
 }
 
 
@@ -322,7 +321,7 @@ window.onload = atualizaClientes()
 
 
 //testes
-adicionaItemCarrinho(listaItens[2], 5, "kg")
-adicionaItemCarrinho(listaItens[4], 2, "saco")
-adicionaItemCarrinho(listaItens[6], 2, "kg")
+// adicionaItemCarrinho(listaItens[2], 5, "kg")
+// adicionaItemCarrinho(listaItens[4], 2, "saco")
+// adicionaItemCarrinho(listaItens[6], 2, "kg")
 

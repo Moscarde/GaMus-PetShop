@@ -127,11 +127,11 @@ const listaItens = [RCNutrilusProAdultos, RCMagnusAdultos, RCGranPlusAdultos, RC
 
 //testes
 //console.log(listaItens[0].constructor.name)
-console.log(listaItens);
-
+// console.log('DB', listaItens);
 // console.log(listaItens[0].nome.includes('Foster'))
-//          ---Interação---
 
+
+//          ---Interação---
 let codigoCliente = 0;
 class Cliente {
     constructor(nome, endereco, telefone) {
