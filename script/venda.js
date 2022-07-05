@@ -35,6 +35,7 @@ let carrinho = []
 let listaFiltrada = []
 
 
+
 //=== === === FUNCOES === === ===
 //          === === === Calculos e redundancias === === ===
 
@@ -155,13 +156,14 @@ const adicionaLinhaTabela = (novoItem, tipo) => {
     tabelaCarrinho.innerHTML += estrutura
     
     //somando valores
-    valorTotalSomado.innerHTML = ""
-    const valorItemLista = document.querySelectorAll(".valor-item")
     let valorTotalCarrinho = 0
-    valorItemLista.forEach(valor => {
-        valorTotalCarrinho += Number(valor.innerHTML)
-    });
+    valorTotalSomado.innerHTML = ""
+    for (let i = 0; i < carrinho.length; i++) {
+        const novoItem = carrinho[i];
+        valorTotalCarrinho += novoItem.valorVenda
+    }
     valorTotalSomado.innerHTML = valorTotalCarrinho.toFixed(2)
+
 }
 
 //checa estoque, adiciona o item no array carrinho e chama adicionaLinhaTabela
@@ -310,6 +312,7 @@ btnFecharCarrinho.onclick = function () {
         return
     }
     imprimir()
+    teste()
 }
 
 
@@ -319,7 +322,7 @@ window.onload = atualizaClientes()
 
 
 //testes
-// adicionaItemCarrinho(listaItens[2], 5, "kg")
-// adicionaItemCarrinho(listaItens[4], 2, "saco")
-// adicionaItemCarrinho(listaItens[6], 2, "kg")
+adicionaItemCarrinho(listaItens[2], 5, "kg")
+adicionaItemCarrinho(listaItens[4], 2, "saco")
+adicionaItemCarrinho(listaItens[6], 2, "kg")
 
