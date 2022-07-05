@@ -1,3 +1,4 @@
+![full](https://i.imgur.com/VH3ywnA.jpg)
 # GaMus PetShop - Vendas
 
 ## :bookmark_tabs: Descrição do projeto
