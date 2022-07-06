@@ -247,7 +247,7 @@ arrowLeft.onclick = function () {
     let listaAtual = checarLista()
     itemAtual = listaAtual[listaAtual.indexOf(itemAtual) - 1]
     if (itemAtual === undefined) {
-        itemAtual = listaItens[listaItens.length - 1]
+        itemAtual = listaAtual[listaAtual.length - 1]
     }
     mostraItemPreview(itemAtual)
 }
@@ -308,6 +308,10 @@ function imprimir() {
 btnFecharCarrinho.onclick = function () {
     if (inputClienteNome.value == "" || inputClienteEndereco.value == "" || inputClienteTelefone == "") {
         alert('Dados do cliente incompleto!');
+        return
+    }
+    if (carrinho.length === 0) {
+        alert('Carrinho vazio!');
         return
     }
     imprimir()
