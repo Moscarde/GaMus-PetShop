@@ -5,7 +5,6 @@
 
 <p> Projeto de estudo usando com foco em classes e objetos javascript, e interações com os objetos do documento.</p>
 
-<!-- [Link para visualizar no navegador](https://gamus-pet-shop.vercel.app/) -->
 <a href="https://gamus-pet-shop.vercel.app/" target="_blank">Link para visualizar no navegador</a></p>
 
 ##  :warning: Problemática
