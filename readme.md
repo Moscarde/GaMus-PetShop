@@ -14,7 +14,7 @@
 
 <p>O projeto trabalha com uma problemática de um sistema de vendas interno de um petshop.</p>
 
-## ✔️ Técnicas e tecnologias utilizadas
+## :blue_book: Tecnologias / Linguagens utilizadas
 
 - ``HTML``
 - ``CSS``
