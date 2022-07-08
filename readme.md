@@ -1,14 +1,24 @@
 # GaMus PetShop - Vendas
 ![full](https://i.imgur.com/VH3ywnA.jpg)
+> Status do Projeto: :heavy_check_mark: (07/22)
 
 ## :bookmark_tabs: Descrição do projeto
 
 <p> Projeto de estudo usando com foco em classes e objetos javascript, e interações com os objetos do documento.</p>
 
+## :dash: Deploy da Aplicação 
+
 <a href="https://gamus-pet-shop.vercel.app/" target="_blank">Link para visualizar no navegador</a></p>
 
 ##  :warning: Problemática
+
 <p>O projeto trabalha com uma problemática de um sistema de vendas interno de um petshop.</p>
+
+## ✔️ Técnicas e tecnologias utilizadas
+
+- ``HTML``
+- ``CSS``
+- ``JS``
 
 ## :hammer: Funcionalidades do projeto
 
