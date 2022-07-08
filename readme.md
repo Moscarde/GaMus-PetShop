@@ -4,7 +4,7 @@
 
 ## :bookmark_tabs: Descrição do projeto
 
-<p> Projeto de estudo usando com foco em classes e objetos javascript, e interações com os objetos do documento.</p>
+<p> Projeto de estudo com foco em classes e objetos javascript, e interações com os objetos do documento.</p>
 
 ## :dash: Deploy da Aplicação 
 
